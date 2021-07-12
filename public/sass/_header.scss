@@ -1,0 +1,231 @@
+/*---------------------
+  Header
+-----------------------*/
+.header__top {
+    background: #182143;
+}
+
+.header__top__widget {
+    padding: 11px 0 14px;
+
+    li {
+        font-size: 15px;
+        color: $white-color;
+        display: inline-block;
+        margin-right: 50px;
+        position: relative;
+        list-style: none;
+
+        &::after {
+            position: absolute;
+            right: -32px;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            content: '';
+        }
+
+        &:last-child {
+            margin-right: 0;
+            
+            &:after {
+                display: none;
+            }
+        }
+
+        i {
+            font-size: 18px;
+            color: $primary-color;
+            margin-right: 8px;
+        }
+    }
+}
+
+.header__top__language {
+    background: $primary-color;
+    padding: 11px 20px;
+    float: right;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+
+        ul {
+            top: 40px;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    img {
+        display: inline-block;
+        height: 26px;
+        width: 26px;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+
+    span {
+        font-size: 15px;
+        font-weight: 700;
+        color: $white-color;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-right: 12px;
+    }
+
+    i {
+        font-size: 20px;
+        display: inline-block;
+        color: $white-color;
+    }
+
+    ul {
+        position: absolute;
+        left: 50px;
+        top: 60px;
+        width: 100px;
+        background: $white-color;
+        opacity: 0;
+        visibility: hidden;
+        box-shadow: 0 0 20px rgba(54, 54, 54, 0.15);
+        @include transition(all, .3s);
+        z-index: 9;
+
+        li {
+            list-style: none;
+
+            a {
+                font-size: 14px;
+                color: #252525;
+                padding: 5px 5px 5px 15px;
+                display: block;
+            }
+        }
+    }
+}
+
+.header__logo {
+    padding: 30px 0 ;
+
+    a {
+        display: inline-block;
+    }
+}
+
+.header__nav {
+    text-align: right;
+    padding: 38px 0 33px;
+}
+
+.header__menu {
+    display: inline-block;
+
+    ul {
+
+        li {
+            list-style: none;
+            display: inline-block;
+            margin-right: 65px;
+            position: relative;
+
+            &.active {
+
+                a {
+
+                    &:after {
+                        width: 100%;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &:hover {
+
+                a {
+
+                    &:after {
+                        width: 100%;
+                        opacity: 1;
+                    }
+                }
+
+                .dropdown {
+                    top: 36px;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+            .dropdown {
+                position: absolute;
+                left: 0;
+                top: 56px;
+                width: 180px;
+                background: $heading-color;
+                text-align: left;
+                padding: 5px 0;
+                z-index: 9;
+                opacity: 0;
+                visibility: hidden;
+                @include transition(all, .5s);
+
+                li {
+                    display: block;
+                    margin-right: 0;
+
+                    a {
+                        font-size: 14px;
+                        color: $white-color;
+                        font-weight: 400;
+                        padding: 10px 20px;
+
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            a {
+                font-size: 18px;
+                color: $heading-color;
+                font-weight: 700;
+                display: block;
+                padding: 5px 0;
+                position: relative;
+
+                &:after {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    height: 2px;
+                    width: 0%;
+                    background: $primary-color;
+                    content: '';
+                    opacity: 0;
+                    @include transition(all, .5s);
+                }
+            }
+        }
+    }
+}
+
+.header__search {
+    display: inline-block;
+
+    i {
+        font-size: 18px;
+        color: $heading-color;
+        cursor: pointer;
+    }
+}
+
+.offcanvas-menu-wrapper {
+    display: none;
+}
+
+.canvas__open {
+    display: none;
+}

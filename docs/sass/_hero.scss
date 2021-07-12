@@ -1,0 +1,102 @@
+/*---------------------
+  Hero
+-----------------------*/
+.hero {
+    padding: 170px 0;
+}
+
+.hero__text {
+    padding-top: 90px;
+
+    h2 {
+        font-size: 50px;
+        color: $white-color;
+        font-weight: 700;
+        line-height: 60px;
+        margin-bottom: 65px;
+    }
+
+    p {
+        color: $white-color;
+        margin-bottom: 60px;
+    }
+
+    .primary-btn {
+        margin-right: 16px;
+
+        &.howit-btn {
+            background: #223060;
+        }
+    }
+}
+
+.hero__form {
+    background: $white-color;
+    padding: 50px 30px 45px;
+    border-radius: 2px;
+
+    h3 {
+        color: $heading-color;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    form {
+
+        .input-list {
+            overflow: hidden;
+            margin-right: -20px;
+    
+            &.last {
+                
+                .input-list-item {
+                    margin-bottom: 30px;
+                }
+            }
+    
+            .input-list-item {
+                width: calc(50% - 20px);
+                float: left;
+                margin-right: 20px;
+                margin-bottom: 20px;
+    
+                p {
+                    color: $heading-color;
+                    margin-bottom: 12px;
+                }
+    
+                input {
+                    width: 100%;
+                    height: 48px;
+                    border-radius: 2px;
+                    border: none;
+                    background: #f6f6f6;
+                    padding-left: 15px;
+                }
+            }
+        }
+    
+        .input-full-width {
+            margin-bottom: 20px;
+    
+            p {
+                color: $heading-color;
+                margin-bottom: 12px;
+            }
+    
+            input {
+                width: 100%;
+                height: 48px;
+                border-radius: 2px;
+                border: none;
+                background: #f6f6f6;
+                padding-left: 15px;
+            }
+        }
+    
+        button {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,473 @@
+/*---------------------
+  Home About
+-----------------------*/
+.home__about__text {
+  padding-top: 40px;
+
+  .section-title {
+    text-align: left;
+    margin-bottom: 60px;
+  }
+}
+
+.home__about__item {
+  margin-bottom: 65px;
+
+  h4 {
+    color: $heading-color;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.home__about__img {
+
+  img {
+    min-width: 100%;
+    border-radius: 2px;
+  }
+}
+
+/*---------------------
+  Loan Services
+-----------------------*/
+.loan-services {
+  padding-bottom: 0;
+  padding-top: 90px;
+  background: #f6f7f9;
+}
+
+.loan__services__list {
+  margin-left: -15px;
+  margin-right: -15px;
+  overflow: hidden;
+}
+
+.loan__services__item {
+  width: 20%;
+  float: left;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+
+  &:hover {
+
+    .loan__services__item__text {
+      bottom: 40px;
+
+      h4 {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}
+
+.loan__services__item__text {
+  position: absolute;
+  left: 0;
+  bottom: -150px;
+  width: 100%;
+  padding: 0 35px;
+  @include transition(all, .4s);
+
+  h4 {
+    font-weight: 700;
+    color: $white-color;
+    margin-bottom: 80px;
+    @include transition(all, .2s);
+
+    span {
+      color: $primary-color;
+    }
+  }
+
+  p {
+    color: $white-color;
+    margin-bottom: 25px;
+  }
+
+  a {
+    font-size: 12px;
+    color: $white-color;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 0;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background: $primary-color;
+      content: '';
+    }
+  }
+}
+
+/*---------------------
+  Choose
+-----------------------*/
+.choose {
+  padding-bottom: 20px;
+  padding-top: 80px;
+}
+
+.choose__item {
+  background: $white-color;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  text-align: center;
+  padding: 0 30px 60px;
+  margin-bottom: 80px;
+
+  img {
+    margin-top: -40px;
+  }
+
+  h5 {
+    font-size: 20px;
+    color: $heading-color;
+    font-weight: 700;
+    margin-bottom: 12px;
+    margin-top: 35px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+/*---------------------
+  Testimonial
+-----------------------*/
+.testimonial {
+  padding-bottom: 260px;
+
+  .section-title {
+    margin-bottom: 60px;
+
+    h2 {
+      color: $white-color;
+    }
+
+    p {
+      color: $white-color;
+    }
+  }
+}
+
+.testimonial__carousel {
+  margin-top: -265px;
+}
+
+.testimonial__item {
+  background: $white-color;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 2px;
+  padding: 0 50px 40px;
+
+  img {
+    margin-top: -50px;
+  }
+
+  h5 {
+    font-size: 20px;
+    color: $heading-color;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 4px;
+  }
+
+  span {
+    display: block;
+    font-size: 15px;
+    color: $primary-color;
+    margin-bottom: 25px;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 35px;
+  }
+}
+
+.testimonial__slider {
+
+  &.owl-carousel {
+
+    .col-lg-4 {
+      max-width: 100%;
+    }
+
+    .owl-stage-outer {
+      padding: 60px 0 30px;
+    }
+
+    .owl-item {
+
+      img {
+        display: inline-block;
+        width: auto;
+      }
+    }
+
+    .owl-dots {
+      text-align: center;
+      padding-top: 10px;
+
+      button {
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        background: #818181;
+        border-radius: 50%;
+        margin-right: 8px;
+
+        &.active {
+          background: $primary-color;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+/*---------------------
+  Counter
+-----------------------*/
+.counter {
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.counter__item {
+  text-align: center;
+  margin-bottom: 30px;
+
+  img {
+
+  }
+
+  .counter__number {
+    margin-top: 10px;
+
+    h2 {
+      font-size: 40px;
+      color: $heading-color;
+      font-weight: 700;
+      display: inline-block;
+    }
+  
+    span {
+      font-size: 40px;
+      color: $heading-color;
+      font-weight: 700;
+      display: inline-block;
+    }
+  }
+}
+
+/*---------------------
+  Call
+-----------------------*/
+.call__text {
+
+  .section-title {
+    text-align: left;
+    margin-bottom: 35px;
+
+    h2 {
+      color: $white-color;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: $white-color;
+    }
+  }
+
+  a {
+    font-size: 15px;
+    color: $white-color;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 0;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background: $primary-color;
+      content: '';
+    }
+  }
+}
+
+.call__form {
+
+  input {
+    width: 100%;
+    height: 48px;
+    color: $para-color;
+    font-size: 15px;
+    padding-left: 20px;
+    border: none;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .nice-select {
+    float: none;
+    width: 100%;
+    height: 48px;
+    border-radius: 2px;
+    line-height: 48px;
+    margin-bottom: 20px;
+    
+    span {
+      font-size: 15px;
+      color: $heading-color;
+    }
+
+    .list {
+      width: 100%;
+      margin-top: 0;
+      border-radius: 0;
+    }
+
+    &:after {
+      height: 10px;
+      width: 10px;
+      border-bottom: 2px solid $heading-color;
+      border-right: 2px solid $heading-color;
+      margin-top: 0;
+      right: 22px;
+      top: 35%;
+    }
+  }
+}
+
+/*---------------------
+  Latest Blog
+-----------------------*/
+.latest {
+  padding-top: 80px;
+}
+
+.latest__blog__item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  padding: 40px 35px 40px 30px;
+  @include transition(all, .3s);
+  margin-bottom: 50px;
+
+  &:hover {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+
+    h5 {
+
+      a {
+        color: $primary-color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  h5 {
+    margin-bottom: 45px;
+
+    a {
+      font-size: 20px;
+      color: #1a3048;
+      font-weight: 700;
+      @include transition(all, .2s);
+    }
+  }
+
+  p {
+    line-height: 23px;
+    margin-bottom: 25px;
+  }
+}
+
+.latest__blog__author {
+
+  .latest__blog__author__pic {
+    float: left;
+    margin-right: 15px;
+  }
+
+  .latest__blog__author__text {
+    overflow: hidden;
+    padding-top: 5px;
+
+    h6 {
+      color: $primary-color;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    span {
+      font-size: 12px;
+      color: #777C81;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+/*---------------------
+  Contact Widget
+-----------------------*/
+.contact-widget {
+  padding-top: 40px;
+  padding-bottom: 34px;
+}
+
+.contact__widget__item {
+
+  h4 {
+    color: $white-color;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: #a8a8a8;
+    margin-bottom: 0;
+  }
+}
+
+.contact__widget__phone {
+  text-align: right;
+
+  span {
+    font-size: 20px;
+    color: $white-color;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 700;
+    color: $primary-color;
+    margin-top: 10px;
+  }
+}

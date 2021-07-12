@@ -1,0 +1,79 @@
+/*---------------------
+  Services
+-----------------------*/
+.services {
+    padding-bottom: 30px;
+}
+
+.services__item {
+    margin-bottom: 70px;
+    @include transition(all, .3s);
+
+    &:hover {
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+
+        .services__item__text {
+            border: 1px solid transparent;
+
+            a {
+
+                &:after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.services__item__img {
+
+    img {
+        border-radius: 5px 5px 0 0;
+        min-width: 100%;
+    }
+}
+
+.services__item__text {
+    padding-top: 35px;
+    padding-bottom: 30px;
+    text-align: center;
+    border: 1px solid rgba(112, 112, 112, 0.1);
+    border-radius: 0 0 5px 5px;
+    @include transition(all, .3s);
+
+    h4 {
+        color: $heading-color;
+        font-weight: 700;
+        margin-bottom: 6px;
+
+        span {
+            color: $primary-color;
+        }
+    }
+
+    p {
+        margin-bottom: 34px;
+    }
+
+    a {
+        font-size: 12px;
+        color: $heading-color;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 0;
+        position: relative;
+    
+        &:after {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 2px;
+          width: 100%;
+          background: $primary-color;
+          content: '';
+          @include transition(all, .3s);
+          opacity: 0;
+        }
+    }
+}
