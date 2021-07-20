@@ -10,8 +10,7 @@ export default class EarnTron extends Component {
 
     this.state = {
 
-      min: 200,
-      texto: "Register",
+      texto: "Loading...",
       sponsor: "",
       level: "Loading...",
       levelPrice: 0,
@@ -35,9 +34,6 @@ export default class EarnTron extends Component {
     var accountAddress = await window.tronWeb.trx.getAccount();
     accountAddress = window.tronWeb.address.fromHex(accountAddress.address);
 
-
-    var min = 20;
-
     var activeLevels = 0;
 
     for (var i = 15; i >= 0; i--) {
@@ -56,11 +52,21 @@ export default class EarnTron extends Component {
 
     balanceUSDT = parseInt(balanceUSDT._hex)/10**6;
 
+    var aproved = await contractTRC20.allowance(accountAddress, contractAddress).call();
+
+    aproved = parseInt(aproved.remaining._hex)/10**6;
+
+    if(aproved > 0){
+      aproved = "Buy next level"
+    }else{
+      aproved = "Register"
+    }
+
     this.setState({
-      min: min,
       level: activeLevels,
       levelPrice: parseInt(levelPrice._hex)/10**6,
-      balanceUSDT: balanceUSDT
+      balanceUSDT: balanceUSDT,
+      texto: aproved
     });
 
     //console.log(min);
@@ -73,7 +79,7 @@ export default class EarnTron extends Component {
   async deposit() {
 
 
-    const { min, level, levelPrice, balanceUSDT} = this.state;
+    const { level, levelPrice, balanceUSDT} = this.state;
 
     var amount = levelPrice;
 
@@ -131,24 +137,18 @@ export default class EarnTron extends Component {
         });
 
 
-        if ( amount >= min){
+        if ( await Utils.contract.isUserExists(accountAddress).call() ) {
 
 
-          if ( await Utils.contract.isUserExists(accountAddress).call() ) {
+          await Utils.contract.buyNewLevel(level+1, amount*10**6).send();
 
-
-            await Utils.contract.buyNewLevel(level+1, amount*10**6).send();
-
-
-          }else{
-
-            await Utils.contract.registrationExt(direccionSP, 2*amount*10**6).send();
-
-          }
 
         }else{
-          window.alert("Please enter an amount greater than 200 TRX");
+
+          await Utils.contract.registrationExt(direccionSP, amount*10**6).send();
+
         }
+
 
         
 
@@ -187,12 +187,6 @@ export default class EarnTron extends Component {
 
 
   render() {
-
-    var { min } = this.state;
-
-    min = "Min. "+min+" TRX";
-
-
     
     return (
       
@@ -204,9 +198,9 @@ export default class EarnTron extends Component {
 
           <h3>current level = {this.state.level}</h3>
 
-            <button  onClick={() => this.deposit()} className="primary-btn">Buy next level</button>
+            <button  onClick={() => this.deposit()} className="primary-btn">{this.state.texto}</button>
             <p>Price {this.state.levelPrice} USDT</p>
-            <p>You must have ~ 50 TRX to make the transaction</p>
+            <p>You must have ~ 30 TRX to make the transaction</p>
             
           
         </div>

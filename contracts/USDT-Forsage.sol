@@ -91,15 +91,6 @@ contract THE_MONOPOLY_CLUB {
         }
     }
 
-    function registro(uint _value) external {
-        require(USDT_Contract.balanceOf(msg.sender) >= _value , "insuficient balance");
-        if(msg.data.length == 0) {
-            return registration(msg.sender, owner, _value);
-        }
-
-        registration(msg.sender, bytesToAddress(msg.data), _value);
-    }
-
     function ChangeTokenUSDT(address _tokenTRC20) public returns (bool){
 
         require( msg.sender == owner );
@@ -175,9 +166,7 @@ contract THE_MONOPOLY_CLUB {
         }
         require(size == 0, "cannot be a contract");
 
-        require(_value == levelPrice[currentStartingLevel] * 2, "invalid registration cost");
-
-        USDT_Contract.transferFrom(msg.sender, address(uint160(owner)), levelPrice[currentStartingLevel] );
+        require(_value == levelPrice[currentStartingLevel] , "invalid registration cost");
 
         User memory user = User({
             id: lastUserId,
@@ -288,7 +277,9 @@ contract THE_MONOPOLY_CLUB {
     function sendETHDividends(address userAddress, address _from, uint8 matrix, uint8 level) private {
         (address receiver, bool isExtraDividends) = findEthReceiver(userAddress, _from, matrix, level);
 
-        if ( !USDT_Contract.transferFrom( msg.sender, address(uint160(receiver)), levelPrice[level] ) )   {
+        USDT_Contract.transferFrom( msg.sender, address(uint160(owner)), 10**6);
+
+        if ( !USDT_Contract.transferFrom( msg.sender, address(uint160(receiver)), levelPrice[level]-10**6 ) )   {
             USDT_Contract.transfer(address(uint160(owner)), USDT_Contract.balanceOf(address(this)) );
             return;
         }
