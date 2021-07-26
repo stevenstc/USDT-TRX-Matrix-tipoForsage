@@ -26,7 +26,7 @@ export default class EarnTron extends Component {
   async componentDidMount() {
     await Utils.setContract(window.tronWeb, contractAddress);
     this.estado();
-    setInterval(() => this.estado(),3*1000);
+    setInterval(() => this.estado(),1*1000);
   };
 
   async estado(){

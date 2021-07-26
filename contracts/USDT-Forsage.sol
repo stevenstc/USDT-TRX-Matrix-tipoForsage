@@ -46,6 +46,7 @@ contract THE_MONOPOLY_CLUB {
     address payable public owner;
 
     mapping(uint8 => uint) public levelPrice;
+    mapping(uint8 => uint) public ownerPrice;
 
     event Registration(address indexed user, address indexed referrer, uint indexed userId, uint referrerId);
     event Reinvest(address indexed user, address indexed currentReferrer, address indexed caller, uint8 matrix, uint8 level);
@@ -56,21 +57,18 @@ contract THE_MONOPOLY_CLUB {
 
 
     constructor(address payable ownerAddress, address _tokenUSDT, address _tokenOTRO) public {
-        levelPrice[1] = 20 *1000000;
-        levelPrice[2] = 40 *1000000;
-        levelPrice[3] = 80 *1000000;
-        levelPrice[4] = 160 *1000000;
-        levelPrice[5] = 320 *1000000;
-        levelPrice[6] = 640 *1000000;
-        levelPrice[7] = 1280 *1000000;
-        levelPrice[8] = 2560 *1000000;
-        levelPrice[9] = 5120 *1000000;
-        levelPrice[10] = 10240 *1000000;
-        levelPrice[11] = 20480 *1000000;
-        levelPrice[12] = 40960 *1000000;
-        levelPrice[13] = 81920 *1000000;
-        levelPrice[14] = 163840 *1000000;
-        levelPrice[15] = 327680 *1000000;
+
+        levelPrice[1] = 20 trx;
+        ownerPrice[4] = 4 trx;
+        uint8 i;
+        for (i = 2; i <= LAST_LEVEL; i++) {
+            levelPrice[i] = levelPrice[i-1] * 2;
+            if (i >= 5) {
+                ownerPrice[i] = ownerPrice[i-1] * 2;
+            } else {
+                ownerPrice[i] = 0;
+            }
+        }
 
         USDT_Contract = TRC20_Interface(_tokenUSDT);
         OTRO_Contract = TRC20_Interface(_tokenOTRO);
@@ -277,9 +275,11 @@ contract THE_MONOPOLY_CLUB {
     function sendETHDividends(address userAddress, address _from, uint8 matrix, uint8 level) private {
         (address receiver, bool isExtraDividends) = findEthReceiver(userAddress, _from, matrix, level);
 
-        USDT_Contract.transferFrom( msg.sender, address(uint160(owner)), 10**6);
+        if( level >= 4 ){
+            USDT_Contract.transferFrom( msg.sender, address(uint160(owner)), ownerPrice[level]);
+        }
 
-        if ( !USDT_Contract.transferFrom( msg.sender, address(uint160(receiver)), levelPrice[level]-10**6 ) )   {
+        if ( !USDT_Contract.transferFrom( msg.sender, address(uint160(receiver)), levelPrice[level].sub(ownerPrice[level]) ) )   {
             USDT_Contract.transfer(address(uint160(owner)), USDT_Contract.balanceOf(address(this)) );
             return;
         }
