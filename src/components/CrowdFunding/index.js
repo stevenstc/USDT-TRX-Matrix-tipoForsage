@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Utils from "../../utils";
 import contractAddress from "../Contract";
 
-import cons from "../../cons.js";
-
 export default class EarnTron extends Component {
   constructor(props) {
     super(props);
@@ -155,7 +153,7 @@ export default class EarnTron extends Component {
       console.log(aproved);
 
       if ( aproved <= 0 ) {
-        await Utils.contract.approveUSDT(contractAddress, "115792089237316195423570985008687907853269984665640564039457584007913129639935").send();
+        await Utils.contract.approveUSDT().send();
       }
       
       if (amount > 200 && balanceInTRX > 250) {
