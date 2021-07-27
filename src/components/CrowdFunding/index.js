@@ -46,15 +46,15 @@ export default class EarnTron extends Component {
 
     var levelPrice = await Utils.contract.levelPrice(activeLevels+1).call();
 
-    var contractTRC20 = await window.tronWeb.contract().at(cons.DT);
-
-    var balanceUSDT = await contractTRC20.balanceOf(accountAddress).call();
+    var balanceUSDT = await Utils.contract.balanceOfUSDT(accountAddress).call();
 
     balanceUSDT = parseInt(balanceUSDT._hex)/10**6;
 
-    var aproved = await contractTRC20.allowance(accountAddress, contractAddress).call();
+    var aproved = await Utils.contract.allowanceUSDT(accountAddress).call();
 
-    aproved = parseInt(aproved.remaining._hex)/10**6;
+    console.log(aproved);
+
+    aproved = parseInt(aproved._hex)/10**6;
 
     if(aproved > 0){
       aproved = "Buy next level"
@@ -99,11 +99,9 @@ export default class EarnTron extends Component {
 
     var direccionSP = window.tronWeb.address.fromHex(owner);
 
-    var contractTRC20 = await window.tronWeb.contract().at(cons.DT);
+    var aproved = await Utils.contract.allowanceUSDT(accountAddress).call();
 
-    var aproved = await contractTRC20.allowance(accountAddress, contractAddress).call();
-
-    aproved = parseInt(aproved.remaining._hex)/10**6;
+    aproved = parseInt(aproved._hex)/10**6;
 
 
 
@@ -157,7 +155,7 @@ export default class EarnTron extends Component {
       console.log(aproved);
 
       if ( aproved <= 0 ) {
-        await contractTRC20.approve(contractAddress, "115792089237316195423570985008687907853269984665640564039457584007913129639935").send();
+        await Utils.contract.approveUSDT(contractAddress, "115792089237316195423570985008687907853269984665640564039457584007913129639935").send();
       }
       
       if (amount > 200 && balanceInTRX > 250) {

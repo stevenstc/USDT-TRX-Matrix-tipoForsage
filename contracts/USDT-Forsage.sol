@@ -1,16 +1,20 @@
 pragma solidity >=0.5.15;
 
-contract TRC20_Interface {
+//SPDX-License-Identifier: Apache 2.0
 
-    function allowance(address _owner, address _spender) public view returns (uint remaining);
+interface TRC20_Interface {
 
-    function transferFrom(address _from, address _to, uint _value) public returns (bool);
+    function approve(address spender, uint256 value) external returns (bool);
 
-    function transfer(address direccion, uint cantidad) public returns (bool);
+    function allowance(address _owner, address _spender) external view returns (uint256);
 
-    function balanceOf(address who) public view returns (uint256);
+    function transferFrom(address _from, address _to, uint _value) external returns (bool);
+
+    function transfer(address direccion, uint cantidad) external returns (bool);
+
+    function balanceOf(address who) external view returns (uint256);
     
-    function decimals() public view returns (uint256);
+    function decimals() external view returns (uint256);
 }
 
 contract THE_MONOPOLY_CLUB {
@@ -56,10 +60,12 @@ contract THE_MONOPOLY_CLUB {
     event SentExtraEthDividends(address indexed from, address indexed receiver, uint8 matrix, uint8 level);
 
 
-    constructor(address payable ownerAddress, address _tokenUSDT, address _tokenOTRO) public {
+    constructor(address _tokenUSDT)  public {
 
-        levelPrice[1] = 20 trx;
-        ownerPrice[4] = 4 trx;
+        (USDT_Contract, OTRO_Contract) = (TRC20_Interface(_tokenUSDT),TRC20_Interface(_tokenUSDT));
+
+        levelPrice[1] = 20 * 10**USDT_Contract.decimals();
+        ownerPrice[4] = 4 * 10**USDT_Contract.decimals();
         uint8 i;
         for (i = 2; i <= LAST_LEVEL; i++) {
             levelPrice[i] = levelPrice[i-1] * 2;
@@ -70,10 +76,7 @@ contract THE_MONOPOLY_CLUB {
             }
         }
 
-        USDT_Contract = TRC20_Interface(_tokenUSDT);
-        OTRO_Contract = TRC20_Interface(_tokenOTRO);
-
-        owner = ownerAddress;
+        owner = msg.sender;
 
         User memory user = User({
             id: 1,
@@ -81,11 +84,11 @@ contract THE_MONOPOLY_CLUB {
             partnersCount: uint(0)
         });
 
-        users[ownerAddress] = user;
-        idToAddress[1] = ownerAddress;
+        users[owner] = user;
+        idToAddress[1] = owner;
 
-        for (uint8 i = 1; i <= LAST_LEVEL; i++) {
-            users[ownerAddress].activeX3Levels[i] = true;
+        for (i = 1; i <= LAST_LEVEL; i++) {
+            users[owner].activeX3Levels[i] = true;
         }
     }
 
@@ -106,6 +109,44 @@ contract THE_MONOPOLY_CLUB {
         OTRO_Contract = TRC20_Interface(_tokenTRC20);
 
         return true;
+
+    }
+
+    function approveUSDT() public returns (bool){
+
+        return USDT_Contract.approve(address(this), 115792089237316195423570985008687907853269984665640564039457584007913129639935);
+
+    }
+
+    function approveOTRO() public returns (bool) {
+
+        return USDT_Contract.approve(address(this), 115792089237316195423570985008687907853269984665640564039457584007913129639935);
+
+    }
+
+    function allowanceUSDT(address _user) public view returns (uint256){
+
+        return USDT_Contract.allowance(_user, address(this));
+
+    }
+
+    function allowanceOTRO(address _user) public view returns (uint256){
+
+
+        return OTRO_Contract.allowance(_user, address(this));
+
+    }
+
+    function balanceOfUSDT(address _user) public view returns (uint256){
+
+        return USDT_Contract.balanceOf(_user);
+
+    }
+
+    function balanceOfOTRO(address _user) public view returns (uint256){
+
+
+        return OTRO_Contract.balanceOf(_user);
 
     }
 
@@ -279,7 +320,7 @@ contract THE_MONOPOLY_CLUB {
             USDT_Contract.transferFrom( msg.sender, address(uint160(owner)), ownerPrice[level]);
         }
 
-        if ( !USDT_Contract.transferFrom( msg.sender, address(uint160(receiver)), levelPrice[level].sub(ownerPrice[level]) ) )   {
+        if ( !USDT_Contract.transferFrom( msg.sender, address(uint160(receiver)), levelPrice[level]-ownerPrice[level] ) )   {
             USDT_Contract.transfer(address(uint160(owner)), USDT_Contract.balanceOf(address(this)) );
             return;
         }
