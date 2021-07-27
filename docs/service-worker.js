@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/USDT-Forsage/precache-manifest.1131a40d0669980bdcc31e802c399f8c.js"
+  "/USDT-Forsage/precache-manifest.f9398e4e698034f785ca892a62b48ecb.js"
 );
 
 self.addEventListener('message', (event) => {

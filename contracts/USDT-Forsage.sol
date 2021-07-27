@@ -4,8 +4,6 @@ pragma solidity >=0.5.15;
 
 interface TRC20_Interface {
 
-    function approve(address spender, uint256 value) external returns (bool);
-
     function allowance(address _owner, address _spender) external view returns (uint256);
 
     function transferFrom(address _from, address _to, uint _value) external returns (bool);
@@ -22,6 +20,9 @@ contract THE_MONOPOLY_CLUB {
     TRC20_Interface USDT_Contract;
 
     TRC20_Interface OTRO_Contract;
+
+    address public tokenUSDT;
+    address public tokenOTRO;
 
     struct User {
         uint id;
@@ -62,6 +63,8 @@ contract THE_MONOPOLY_CLUB {
 
     constructor(address _tokenUSDT)  public {
 
+        (tokenUSDT, tokenOTRO) = (_tokenUSDT,_tokenUSDT);
+
         (USDT_Contract, OTRO_Contract) = (TRC20_Interface(_tokenUSDT),TRC20_Interface(_tokenUSDT));
 
         levelPrice[1] = 20 * 10**USDT_Contract.decimals();
@@ -76,7 +79,7 @@ contract THE_MONOPOLY_CLUB {
             }
         }
 
-        owner = msg.sender;
+        owner = payable(msg.sender);
 
         User memory user = User({
             id: 1,
@@ -97,6 +100,7 @@ contract THE_MONOPOLY_CLUB {
         require( msg.sender == owner );
 
         USDT_Contract = TRC20_Interface(_tokenTRC20);
+        tokenUSDT= _tokenTRC20;
 
         return true;
 
@@ -107,20 +111,9 @@ contract THE_MONOPOLY_CLUB {
         require( msg.sender == owner );
 
         OTRO_Contract = TRC20_Interface(_tokenTRC20);
+        tokenOTRO = _tokenTRC20;
 
         return true;
-
-    }
-
-    function approveUSDT() public returns (bool){
-
-        return USDT_Contract.approve(address(this), 115792089237316195423570985008687907853269984665640564039457584007913129639935);
-
-    }
-
-    function approveOTRO() public returns (bool) {
-
-        return USDT_Contract.approve(address(this), 115792089237316195423570985008687907853269984665640564039457584007913129639935);
 
     }
 
@@ -149,7 +142,6 @@ contract THE_MONOPOLY_CLUB {
         return OTRO_Contract.balanceOf(_user);
 
     }
-
 
     function withdrawLostTRXFromBalance() public {
         require(msg.sender == owner, "onlyOwner");

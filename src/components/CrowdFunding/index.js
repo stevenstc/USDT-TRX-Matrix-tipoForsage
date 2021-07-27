@@ -12,7 +12,9 @@ export default class EarnTron extends Component {
       sponsor: "",
       level: "Loading...",
       levelPrice: 0,
-      balanceUSDT: "Loading..."
+      balanceUSDT: "Loading...",
+      aprovedUSDT: 0,
+      contractUSDT:{}
   
 
     };
@@ -48,23 +50,29 @@ export default class EarnTron extends Component {
 
     balanceUSDT = parseInt(balanceUSDT._hex)/10**6;
 
-    var aproved = await Utils.contract.allowanceUSDT(accountAddress).call();
+    var tokenAddress = await Utils.contract.tokenUSDT().call();
+
+    const contractUSDT = await window.tronWeb.contract().at(tokenAddress);
+
+    var aproved = await contractUSDT.allowance(accountAddress, contractAddress).call();
 
     console.log(aproved);
 
     aproved = parseInt(aproved._hex)/10**6;
-
+    var text;
     if(aproved > 0){
-      aproved = "Buy next level"
+      text = "Buy next level"
     }else{
-      aproved = "Register"
+      text = "Register"
     }
 
     this.setState({
       level: activeLevels,
       levelPrice: parseInt(levelPrice._hex)/10**6,
       balanceUSDT: balanceUSDT,
-      texto: aproved
+      texto: text,
+      aprovedUSDT: aproved,
+      contractUSDT: contractUSDT
     });
 
     //console.log(min);
@@ -77,7 +85,7 @@ export default class EarnTron extends Component {
   async deposit() {
 
 
-    const { level, levelPrice, balanceUSDT} = this.state;
+    const { level, levelPrice, balanceUSDT, aprovedUSDT, contractUSDT} = this.state;
 
     var amount = levelPrice;
 
@@ -97,9 +105,7 @@ export default class EarnTron extends Component {
 
     var direccionSP = window.tronWeb.address.fromHex(owner);
 
-    var aproved = await Utils.contract.allowanceUSDT(accountAddress).call();
-
-    aproved = parseInt(aproved._hex)/10**6;
+    var aproved = aprovedUSDT;
 
     var LAST_LEVEL = await Utils.contract.LAST_LEVEL().call();
 
@@ -153,7 +159,7 @@ export default class EarnTron extends Component {
       console.log(aproved);
 
       if ( aproved <= 0 ) {
-        await Utils.contract.approveUSDT().send();
+        await contractUSDT.approve(contractAddress, "115792089237316195423570985008687907853269984665640564039457584007913129639935").send();
       }
       
       if (amount > 200 && balanceInTRX > 250) {
