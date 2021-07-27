@@ -29,7 +29,7 @@ export default class EarnTron extends Component {
     await Utils.setContract(window.tronWeb, contractAddress);
     setInterval(() => this.Link(),1*1000);
 
-    setInterval(() => this.Investors(),2*1000);
+    setInterval(() => this.Investors(),7*1000);
   };
 
   async Link() {
@@ -64,22 +64,33 @@ export default class EarnTron extends Component {
     var direccion = await window.tronWeb.trx.getAccount();
     var direccion = window.tronWeb.address.fromHex(direccion.address);
 
-    var activeLevels = 0;
-
     var canasta = [];
 
-    for (var i = 15; i >= 0; i--) {
+    for (var i = 1; i <= 15; i++) {
 
       if (await Utils.contract.usersActiveX3Levels(direccion, i).call()) {
-        activeLevels++ ;
+
         var matrix = await Utils.contract.usersX3Matrix(direccion, i).call();
         canasta[i] = (
-          <div className="col-sm-4 single-services" key={"level"+i}>
-            <h4 className="pt-30 pb-20">Nivel {i}</h4>
-            <p>
-              personas {matrix[1].length}| ciclos {parseInt(matrix[1].length/3)}
-            </p>
-          </div>);
+          <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+i}>
+            <div className="choose__item">
+                <img src={"img/choose/choose-"+i+".svg"} alt="" width="50%" />
+                <h5>Level</h5>
+                <p>Referers {matrix[1].length} <strong>|</strong> cycles {parseInt(matrix[1].length/3)}</p>
+            </div>
+          </div>
+        );
+
+      }else{
+
+        canasta[i] = (
+          <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+i}>
+            <div className="choose__item">
+                <h5>Level {i} (Inactive) </h5>
+            </div>
+          </div>
+        );
+
       }
 
 
@@ -130,25 +141,19 @@ export default class EarnTron extends Component {
 
       <>
 
-      <section className="loan-services spad">
-          <div className="container">
-              <div className="row">
-                  <div className="col-lg-12">
-                      <div className="section-title">
-                          <h2>My referral link:</h2>
-                          <p>
+<div className="row">
+                <div className="col-lg-12">
+                    <div className="section-title">
+                        <h2>My referral link:</h2>
+                        <p>
                             <a style={{"color":"blue"}} href={link}>{link}</a> &nbsp;&nbsp;
                             <CopyToClipboard text={link}>
                               <button type="button" className="primary-btn">Copy</button>
                             </CopyToClipboard>
                           </p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-
-            
+                    </div>
+                </div>
+            </div>        
 
           <div className="row">
 

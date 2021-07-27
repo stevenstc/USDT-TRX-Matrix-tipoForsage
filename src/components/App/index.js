@@ -141,7 +141,13 @@ class App extends Component {
         </div>
     </section>
 
-        <Oficina /> 
+    <section className="choose spad">
+        <div className="container">
+          <Oficina /> 
+        </div>
+    </section>
+
+        
 
       </>
     );

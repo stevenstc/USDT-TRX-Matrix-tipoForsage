@@ -101,9 +101,9 @@ export default class EarnTron extends Component {
 
     aproved = parseInt(aproved._hex)/10**6;
 
+    var LAST_LEVEL = await Utils.contract.LAST_LEVEL().call();
 
-
-    if ( balanceInTRX >= 50 && aproved >= amount && balanceUSDT >= amount){
+    if ( balanceInTRX >= 50 && aproved >= amount && balanceUSDT >= amount && level < LAST_LEVEL){
 
       var loc = document.location.href;
       if(loc.indexOf('?')>0){
