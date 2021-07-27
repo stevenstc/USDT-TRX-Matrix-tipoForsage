@@ -28,8 +28,8 @@ export default class EarnTron extends Component {
   async componentDidMount() {
     await Utils.setContract(window.tronWeb, contractAddress);
     setInterval(() => this.Link(),1*1000);
-
-    setInterval(() => this.Investors(),7*1000);
+    await this.Investors(true);
+    setInterval(() => this.Investors(false),7*1000);
   };
 
   async Link() {
@@ -59,7 +59,7 @@ export default class EarnTron extends Component {
   }
     
 
-  async Investors() {
+  async Investors(hacer) {
 
     var direccion = await window.tronWeb.trx.getAccount();
     var direccion = window.tronWeb.address.fromHex(direccion.address);
@@ -93,12 +93,24 @@ export default class EarnTron extends Component {
 
       }
 
+      if(hacer){
+        this.setState({
+          canastas:canasta
+    
+        });
+
+      }
+
+      
+    }
+
+
+    if(!hacer){
       this.setState({
         canastas:canasta
   
       });
 
-      
     }
 
 
