@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/TRON-Forsage/static/js/main.349435bc.chunk.js",
-    "main.js.map": "/TRON-Forsage/static/js/main.349435bc.chunk.js.map",
-    "runtime-main.js": "/TRON-Forsage/static/js/runtime-main.4070ced0.js",
-    "runtime-main.js.map": "/TRON-Forsage/static/js/runtime-main.4070ced0.js.map",
-    "static/js/2.8d22c248.chunk.js": "/TRON-Forsage/static/js/2.8d22c248.chunk.js",
-    "static/js/2.8d22c248.chunk.js.map": "/TRON-Forsage/static/js/2.8d22c248.chunk.js.map",
-    "index.html": "/TRON-Forsage/index.html",
-    "precache-manifest.502110d07424017a06c6b545ac3f357f.js": "/TRON-Forsage/precache-manifest.502110d07424017a06c6b545ac3f357f.js",
-    "service-worker.js": "/TRON-Forsage/service-worker.js",
-    "static/js/2.8d22c248.chunk.js.LICENSE.txt": "/TRON-Forsage/static/js/2.8d22c248.chunk.js.LICENSE.txt",
-    "static/media/TronLinkLogo.png": "/TRON-Forsage/static/media/TronLinkLogo.d3a8f115.png"
+    "main.js": "/USDT-Forsage/static/js/main.6915ac96.chunk.js",
+    "main.js.map": "/USDT-Forsage/static/js/main.6915ac96.chunk.js.map",
+    "runtime-main.js": "/USDT-Forsage/static/js/runtime-main.a3400a79.js",
+    "runtime-main.js.map": "/USDT-Forsage/static/js/runtime-main.a3400a79.js.map",
+    "static/js/2.7d860cab.chunk.js": "/USDT-Forsage/static/js/2.7d860cab.chunk.js",
+    "static/js/2.7d860cab.chunk.js.map": "/USDT-Forsage/static/js/2.7d860cab.chunk.js.map",
+    "index.html": "/USDT-Forsage/index.html",
+    "precache-manifest.5ab0538500fe0be6b422953f23546ce1.js": "/USDT-Forsage/precache-manifest.5ab0538500fe0be6b422953f23546ce1.js",
+    "service-worker.js": "/USDT-Forsage/service-worker.js",
+    "static/js/2.7d860cab.chunk.js.LICENSE.txt": "/USDT-Forsage/static/js/2.7d860cab.chunk.js.LICENSE.txt",
+    "static/media/TronLinkLogo.png": "/USDT-Forsage/static/media/TronLinkLogo.d3a8f115.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.4070ced0.js",
-    "static/js/2.8d22c248.chunk.js",
-    "static/js/main.349435bc.chunk.js"
+    "static/js/runtime-main.a3400a79.js",
+    "static/js/2.7d860cab.chunk.js",
+    "static/js/main.6915ac96.chunk.js"
   ]
 }
