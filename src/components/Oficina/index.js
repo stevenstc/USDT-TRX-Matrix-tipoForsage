@@ -93,6 +93,10 @@ export default class EarnTron extends Component {
 
       }
 
+      this.setState({
+        canastas:canasta
+  
+      });
 
       
     }
@@ -102,10 +106,7 @@ export default class EarnTron extends Component {
 
 
 
-    this.setState({
-      canastas:canasta
-
-    });
+    
 
   };
 
