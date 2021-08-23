@@ -46,24 +46,32 @@ export default class EarnTron extends Component {
 
     var levelPrice = await Utils.contract.levelPrice(activeLevels+1).call();
 
-    var balanceUSDT = await Utils.contract.balanceOfUSDT(accountAddress).call();
-
-    balanceUSDT = parseInt(balanceUSDT._hex)/10**6;
-
     var tokenAddress = await Utils.contract.tokenUSDT().call();
 
     const contractUSDT = await window.tronWeb.contract().at(tokenAddress);
 
+    var balanceUSDT = await contractUSDT.balanceOf(accountAddress).call();
+
+    balanceUSDT = parseInt(balanceUSDT._hex)/10**6;
+
     var aproved = await contractUSDT.allowance(accountAddress, contractAddress).call();
 
-    console.log(aproved);
+    //console.log(await Utils.contract.users("TB7RTxBPY4eMvKjceXj8SWjVnZCrWr4XvF").call());
 
-    aproved = parseInt(aproved._hex)/10**6;
+    //console.log(aproved);
+
+    aproved = parseInt(aproved.remaining._hex)/10**6;
+
     var text;
     if(aproved > 0){
-      text = "Buy next level"
+      if (activeLevels === 0){
+        text = "Register and buy the first level"
+      }else{
+        text = "Buy next level"
+      }
+      
     }else{
-      text = "Register"
+      text = "Link Wallet"
     }
 
     this.setState({
@@ -94,9 +102,8 @@ export default class EarnTron extends Component {
     var accountAddress = await window.tronWeb.trx.getAccount();
     accountAddress = window.tronWeb.address.fromHex(accountAddress.address);
 
-    const balanceInSun = await window.tronWeb.trx.getBalance(); //number
-    var balanceInTRX = window.tronWeb.fromSun(balanceInSun); //string
-    balanceInTRX = parseFloat(balanceInTRX);//number
+    var balanceInTRX  = await window.tronWeb.trx.getBalance(); //number
+    balanceInTRX = balanceInTRX/10**6;
 
     console.log(balanceInTRX);
     console.log(amount);
@@ -106,6 +113,11 @@ export default class EarnTron extends Component {
     var direccionSP = window.tronWeb.address.fromHex(owner);
 
     var aproved = aprovedUSDT;
+
+    if ( aproved <= 0 ) {
+      await contractUSDT.approve(contractAddress, "115792089237316195423570985008687907853269984665640564039457584007913129639935").send();
+      return;
+    }
 
     var LAST_LEVEL = await Utils.contract.LAST_LEVEL().call();
 
@@ -155,12 +167,6 @@ export default class EarnTron extends Component {
         
 
     }else{
-
-      console.log(aproved);
-
-      if ( aproved <= 0 ) {
-        await contractUSDT.approve(contractAddress, "115792089237316195423570985008687907853269984665640564039457584007913129639935").send();
-      }
       
       if (amount > 200 && balanceInTRX > 250) {
 
@@ -202,7 +208,7 @@ export default class EarnTron extends Component {
 
             <button  onClick={() => this.deposit()} className="primary-btn">{this.state.texto}</button>
             <p>Price {this.state.levelPrice} USDT</p>
-            <p>You must have ~ 30 TRX to make the transaction</p>
+            <p>You must have ~ 50 TRX to make the transaction</p>
             
           
         </div>

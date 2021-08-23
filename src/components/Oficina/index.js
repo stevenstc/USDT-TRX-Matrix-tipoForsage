@@ -16,7 +16,113 @@ export default class EarnTron extends Component {
       invested: 0,
       paidAt: 0,
       my: 0,
-      withdrawn: 0
+      withdrawn: 0,
+      canastas: [(
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+1}>
+          <div className="choose__item">
+              <h5>Level 1 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+2}>
+          <div className="choose__item">
+              <h5>Level 2 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+3}>
+          <div className="choose__item">
+              <h5>Level 3 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+4}>
+          <div className="choose__item">
+              <h5>Level 4 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+5}>
+          <div className="choose__item">
+              <h5>Level 5 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+6}>
+          <div className="choose__item">
+              <h5>Level 6 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+7}>
+          <div className="choose__item">
+              <h5>Level 7 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+8}>
+          <div className="choose__item">
+              <h5>Level 8 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+9}>
+          <div className="choose__item">
+              <h5>Level 9 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+10}>
+          <div className="choose__item">
+              <h5>Level 10 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+11}>
+          <div className="choose__item">
+              <h5>Level 11 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+12}>
+          <div className="choose__item">
+              <h5>Level 12 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+13}>
+          <div className="choose__item">
+              <h5>Level 13 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+14}>
+          <div className="choose__item">
+              <h5>Level 14 (Inactive) </h5>
+          </div>
+        </div>
+      ),
+      (
+        <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+15}>
+          <div className="choose__item">
+              <h5>Level 15 (Inactive) </h5>
+          </div>
+        </div>
+      )
+    ]
 
     };
 
@@ -61,7 +167,7 @@ export default class EarnTron extends Component {
   async Investors(hacer) {
 
     var direccion = await window.tronWeb.trx.getAccount();
-    var direccion = window.tronWeb.address.fromHex(direccion.address);
+    direccion = window.tronWeb.address.fromHex(direccion.address);
 
     var canasta = [];
 
@@ -70,12 +176,14 @@ export default class EarnTron extends Component {
       if (await Utils.contract.usersActiveX3Levels(direccion, i).call()) {
 
         var matrix = await Utils.contract.usersX3Matrix(direccion, i).call();
+        matrix[3] = parseInt(matrix[3]._hex);
+        console.log(matrix);
         canasta[i] = (
           <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+i}>
             <div className="choose__item">
                 <img src={"img/choose/choose-"+i+".svg"} alt="" width="50%" />
                 <h5>Level</h5>
-                <p>Referers {matrix[1].length} <strong>|</strong> cycles {parseInt(matrix[1].length/3)}</p>
+                <p>Referers {matrix[1].length+(matrix[3]*3)} <strong>|</strong> cycles {matrix[3]}</p>
             </div>
           </div>
         );

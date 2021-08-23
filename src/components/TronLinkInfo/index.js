@@ -59,7 +59,7 @@ export default class TronLinkInfo extends Component {
       <>
         
         <h2>
-          Wallet Conected:
+          Wallet:
         </h2>
         <p>
             <strong>{accountAddress}</strong><br/><br/>

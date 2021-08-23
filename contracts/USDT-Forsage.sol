@@ -74,12 +74,10 @@ contract THE_MONOPOLY_CLUB {
             levelPrice[i] = levelPrice[i-1] * 2;
             if (i >= 5) {
                 ownerPrice[i] = ownerPrice[i-1] * 2;
-            } else {
-                ownerPrice[i] = 0;
-            }
+            } 
         }
 
-        owner = payable(msg.sender);
+        owner = msg.sender;
 
         User memory user = User({
             id: 1,
@@ -93,6 +91,24 @@ contract THE_MONOPOLY_CLUB {
         for (i = 1; i <= LAST_LEVEL; i++) {
             users[owner].activeX3Levels[i] = true;
         }
+    }
+
+    function ChangeLevelPrice(uint8 _level, uint _value) public returns (bool){
+
+        require( msg.sender == owner );
+
+        levelPrice[_level] = _value * 10**USDT_Contract.decimals();
+        
+        return true;
+    }
+
+     function ChangeOwnerPrice(uint8 _level, uint _value) public returns (bool){
+
+        require( msg.sender == owner );
+
+        ownerPrice[_level] = _value * 10**USDT_Contract.decimals();
+
+        return true;
     }
 
     function ChangeTokenUSDT(address _tokenTRC20) public returns (bool){
@@ -114,32 +130,6 @@ contract THE_MONOPOLY_CLUB {
         tokenOTRO = _tokenTRC20;
 
         return true;
-
-    }
-
-    function allowanceUSDT(address _user) public view returns (uint256){
-
-        return USDT_Contract.allowance(_user, address(this));
-
-    }
-
-    function allowanceOTRO(address _user) public view returns (uint256){
-
-
-        return OTRO_Contract.allowance(_user, address(this));
-
-    }
-
-    function balanceOfUSDT(address _user) public view returns (uint256){
-
-        return USDT_Contract.balanceOf(_user);
-
-    }
-
-    function balanceOfOTRO(address _user) public view returns (uint256){
-
-
-        return OTRO_Contract.balanceOf(_user);
 
     }
 
@@ -272,10 +262,11 @@ contract THE_MONOPOLY_CLUB {
     }
 
 
-    function usersX3Matrix(address userAddress, uint8 level) public view returns(address, address[] memory, bool) {
+    function usersX3Matrix(address userAddress, uint8 level) public view returns(address, address[] memory, bool, uint) {
         return (users[userAddress].x3Matrix[level].currentReferrer,
                 users[userAddress].x3Matrix[level].referrals,
-                users[userAddress].x3Matrix[level].blocked);
+                users[userAddress].x3Matrix[level].blocked,
+                users[userAddress].x3Matrix[level].reinvestCount);
     }
 
 

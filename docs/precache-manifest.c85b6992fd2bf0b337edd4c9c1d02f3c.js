@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "03df587d3c4ae87ff07637adf67a21ce",
+    "revision": "ab3fd0b02c8533244d83daa55b12acd6",
     "url": "/USDT-Forsage/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/USDT-Forsage/static/js/2.7d860cab.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1a803f157065ea57117e",
-    "url": "/USDT-Forsage/static/js/main.2e735938.chunk.js"
+    "revision": "070f6acf72bd1e9e480b",
+    "url": "/USDT-Forsage/static/js/main.c5c6260c.chunk.js"
   },
   {
     "revision": "7791e485834670bde543",
