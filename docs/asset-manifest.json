@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/USDT-Forsage/static/js/main.c5c6260c.chunk.js",
-    "main.js.map": "/USDT-Forsage/static/js/main.c5c6260c.chunk.js.map",
+    "main.js": "/USDT-Forsage/static/js/main.3e357e76.chunk.js",
+    "main.js.map": "/USDT-Forsage/static/js/main.3e357e76.chunk.js.map",
     "runtime-main.js": "/USDT-Forsage/static/js/runtime-main.a3400a79.js",
     "runtime-main.js.map": "/USDT-Forsage/static/js/runtime-main.a3400a79.js.map",
     "static/js/2.7d860cab.chunk.js": "/USDT-Forsage/static/js/2.7d860cab.chunk.js",
     "static/js/2.7d860cab.chunk.js.map": "/USDT-Forsage/static/js/2.7d860cab.chunk.js.map",
     "index.html": "/USDT-Forsage/index.html",
-    "precache-manifest.c85b6992fd2bf0b337edd4c9c1d02f3c.js": "/USDT-Forsage/precache-manifest.c85b6992fd2bf0b337edd4c9c1d02f3c.js",
+    "precache-manifest.b797ca47e591d8627262e384ddf80fe8.js": "/USDT-Forsage/precache-manifest.b797ca47e591d8627262e384ddf80fe8.js",
     "service-worker.js": "/USDT-Forsage/service-worker.js",
     "static/js/2.7d860cab.chunk.js.LICENSE.txt": "/USDT-Forsage/static/js/2.7d860cab.chunk.js.LICENSE.txt",
     "static/media/TronLinkLogo.png": "/USDT-Forsage/static/media/TronLinkLogo.d3a8f115.png"
@@ -15,6 +15,6 @@
   "entrypoints": [
     "static/js/runtime-main.a3400a79.js",
     "static/js/2.7d860cab.chunk.js",
-    "static/js/main.c5c6260c.chunk.js"
+    "static/js/main.3e357e76.chunk.js"
   ]
 }

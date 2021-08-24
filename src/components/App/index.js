@@ -42,6 +42,8 @@ class App extends Component {
       const timer = setInterval(() => {
         if (tries >= 10) {
 
+          console.log("intento "+tries);
+
           const TRONGRID_API = "https://api.trongrid.io";
 
           window.tronWeb = new TronWeb(
@@ -72,7 +74,7 @@ class App extends Component {
         });
 
         resolve();
-      }, 100);
+      }, 1000);
     });
 
     if (!this.state.tronWeb.loggedIn) {
@@ -121,33 +123,30 @@ class App extends Component {
     return (
 
       <>
+        <section className="hero set-bg" data-setbg="img/hero-bg.jpg" style={{"backgroundImage": "url('img/hero-bg.jpg')"}}>
+          <div className="container">
+              <div className="row">
+                  <div className="col-lg-5">
+                      <div className="hero__text">
+                          <TronLinkInfo tronWeb={window.tronWeb}/>
+                      </div>
+                  </div>
+                  <div className="col-lg-5 offset-lg-2">
+                      <div className="hero__form">
+                          
+                          <CrowdFunding />
+                          
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </section>
 
-<section className="hero set-bg" data-setbg="img/hero-bg.jpg" style={{"backgroundImage": "url('img/hero-bg.jpg')"}}>
-        <div className="container">
-            <div className="row">
-                <div className="col-lg-5">
-                    <div className="hero__text">
-                        <TronLinkInfo />
-                    </div>
-                </div>
-                <div className="col-lg-5 offset-lg-2">
-                    <div className="hero__form">
-                        
-                        <CrowdFunding />
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section className="choose spad">
-        <div className="container">
-          <Oficina /> 
-        </div>
-    </section>
-
-        
+        <section className="choose spad">
+          <div className="container">
+            <Oficina /> 
+          </div>
+        </section>
 
       </>
     );
@@ -155,6 +154,4 @@ class App extends Component {
   }
 }
 export default App;
-
-// {tWeb()}
 

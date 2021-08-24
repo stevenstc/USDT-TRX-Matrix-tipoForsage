@@ -3,16 +3,9 @@
   "version": "1.0.1",
   "description": "Es la aplicacion para hacer Crowd Funding en la Blockchain tron",
   "main": "tronbox.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js && npx rimraf docs && npx move-cli build docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
   },
   "author": "usdt-forsage",
   "license": "Apache 2.0",

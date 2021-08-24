@@ -20,105 +20,105 @@ export default class EarnTron extends Component {
       canastas: [(
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+1}>
           <div className="choose__item">
-              <h5>Level 1 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 1 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+2}>
           <div className="choose__item">
-              <h5>Level 2 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 2 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+3}>
           <div className="choose__item">
-              <h5>Level 3 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 3 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+4}>
           <div className="choose__item">
-              <h5>Level 4 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 4 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+5}>
           <div className="choose__item">
-              <h5>Level 5 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 5 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+6}>
           <div className="choose__item">
-              <h5>Level 6 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 6 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+7}>
           <div className="choose__item">
-              <h5>Level 7 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 7 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+8}>
           <div className="choose__item">
-              <h5>Level 8 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 8 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+9}>
           <div className="choose__item">
-              <h5>Level 9 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 9 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+10}>
           <div className="choose__item">
-              <h5>Level 10 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 10 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+11}>
           <div className="choose__item">
-              <h5>Level 11 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 11 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+12}>
           <div className="choose__item">
-              <h5>Level 12 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 12 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+13}>
           <div className="choose__item">
-              <h5>Level 13 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 13 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+14}>
           <div className="choose__item">
-              <h5>Level 14 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 14 (Inactive) </strong></span>
           </div>
         </div>
       ),
       (
         <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+15}>
           <div className="choose__item">
-              <h5>Level 15 (Inactive) </h5>
+            <span style={{"fontSize" : "22px"}}><br /><strong>Level 15 (Inactive) </strong></span>
           </div>
         </div>
       )
@@ -164,12 +164,12 @@ export default class EarnTron extends Component {
   }
     
 
-  async Investors(hacer) {
+  async Investors() {
 
     var direccion = await window.tronWeb.trx.getAccount();
     direccion = window.tronWeb.address.fromHex(direccion.address);
 
-    var canasta = [];
+    var canasta = this.state.canastas;
 
     for (var i = 1; i <= 15; i++) {
 
@@ -177,8 +177,8 @@ export default class EarnTron extends Component {
 
         var matrix = await Utils.contract.usersX3Matrix(direccion, i).call();
         matrix[3] = parseInt(matrix[3]._hex);
-        console.log(matrix);
-        canasta[i] = (
+        //console.log(matrix);
+        canasta[i-1] = (
           <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+i}>
             <div className="choose__item">
                 <img src={"img/choose/choose-"+i+".svg"} alt="" width="50%" />
@@ -190,23 +190,22 @@ export default class EarnTron extends Component {
 
       }else{
 
-        canasta[i] = (
+        canasta[i-1] = (
           <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+i}>
             <div className="choose__item">
-                <h5>Level {i} (Inactive) </h5>
+                <span style={{"fontSize" : "22px"}}><br /><strong>Level {i} (Inactive) </strong></span>
             </div>
           </div>
         );
 
       }
 
-      
-    }
-
       this.setState({
         canastas:canasta
   
       });
+
+    }
 
   };
 

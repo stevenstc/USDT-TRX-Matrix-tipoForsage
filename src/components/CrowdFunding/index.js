@@ -30,9 +30,10 @@ export default class EarnTron extends Component {
   };
 
   async estado(){
+    
+    var accountAddress = window.tronWeb.defaultAddress.base58
 
-    var accountAddress = await window.tronWeb.trx.getAccount();
-    accountAddress = window.tronWeb.address.fromHex(accountAddress.address);
+    //console.log(accountAddress);
 
     var activeLevels = 0;
 
@@ -55,8 +56,6 @@ export default class EarnTron extends Component {
     balanceUSDT = parseInt(balanceUSDT._hex)/10**6;
 
     var aproved = await contractUSDT.allowance(accountAddress, contractAddress).call();
-
-    //console.log(await Utils.contract.users("TB7RTxBPY4eMvKjceXj8SWjVnZCrWr4XvF").call());
 
     //console.log(aproved);
 
@@ -84,14 +83,10 @@ export default class EarnTron extends Component {
     });
 
     //console.log(min);
-
-    
-
   }
 
 
   async deposit() {
-
 
     const { level, levelPrice, balanceUSDT, aprovedUSDT, contractUSDT} = this.state;
 
@@ -99,8 +94,7 @@ export default class EarnTron extends Component {
 
     amount = parseFloat(amount);
 
-    var accountAddress = await window.tronWeb.trx.getAccount();
-    accountAddress = window.tronWeb.address.fromHex(accountAddress.address);
+    var accountAddress =  window.tronWeb.defaultAddress.base58;
 
     var balanceInTRX  = await window.tronWeb.trx.getBalance(); //number
     balanceInTRX = balanceInTRX/10**6;
