@@ -13,8 +13,8 @@ export default class EarnTron extends Component {
       registered: false,
       balanceRef: 0,
       totalRef: 0,
-      invested: 0,
-      paidAt: 0,
+      invertido: 0,
+      ganado: 0,
       my: 0,
       withdrawn: 0,
       canastas: [(
@@ -169,15 +169,48 @@ export default class EarnTron extends Component {
     var direccion = await window.tronWeb.trx.getAccount();
     direccion = window.tronWeb.address.fromHex(direccion.address);
 
+    var LAST_LEVEL = 15;
+
     var canasta = this.state.canastas;
 
-    for (var i = 1; i <= 15; i++) {
+    var invertido = 0;
+    var personas = 0;
+    var ganado = 0;
+
+    var levelPrice= [];
+    var ownerPrice= [];
+    levelPrice[1] = 20;
+    ownerPrice[1] = 0;
+    ownerPrice[4] = 4;
+    var i;
+    for (i = 2; i <= LAST_LEVEL; i++) {
+        levelPrice[i] = levelPrice[i-1] * 2;
+        if (i >= 5) {
+            ownerPrice[i] = ownerPrice[i-1] * 2;
+        }else{
+          if (i !== 4) {
+            ownerPrice[i] = 0;
+          } 
+        }
+    }
+
+    //console.log(levelPrice);
+    //console.log(ownerPrice);
+
+    for (i = 1; i <= LAST_LEVEL; i++) {
 
       if (await Utils.contract.usersActiveX3Levels(direccion, i).call()) {
 
+        invertido += levelPrice[i];
+
         var matrix = await Utils.contract.usersX3Matrix(direccion, i).call();
         matrix[3] = parseInt(matrix[3]._hex);
-        //console.log(matrix);
+
+        personas += (matrix[1].length+(matrix[3]*3));
+
+        ganado += (matrix[1].length+(matrix[3]*3))*(ownerPrice[i]);
+
+        //console.log(ganado);
         canasta[i-1] = (
           <div className="col-lg-4 col-md-4 col-sm-6" key={"level"+i}>
             <div className="choose__item">
@@ -202,10 +235,17 @@ export default class EarnTron extends Component {
 
       this.setState({
         canastas:canasta
-  
+        
       });
 
     }
+
+    this.setState({
+      invertido: invertido,
+      ganado: ganado,
+      personas: personas
+      
+    });
 
   };
 
@@ -216,50 +256,58 @@ export default class EarnTron extends Component {
 
 
   render() {
-    var { balanceRef, totalRef, invested,  withdrawn , my, direccion, link} = this.state;
-
-    var available = (balanceRef+my);
-    available = available.toFixed(6);
-    available = parseFloat(available);
-
-    balanceRef = balanceRef.toFixed(6);
-    balanceRef = parseFloat(balanceRef);
-
-    totalRef = totalRef.toFixed(6);
-    totalRef = parseFloat(totalRef);
-
-    invested = invested.toFixed(6);
-    invested = parseFloat(invested);
-
-    withdrawn = withdrawn.toFixed(6);
-    withdrawn = parseFloat(withdrawn);
-
-    my = my.toFixed(6);
-    my = parseFloat(my);
 
     return (
 
       <>
 
-<div className="row">
-                <div className="col-lg-12">
-                    <div className="section-title">
-                        <h2>My referral link:</h2>
-                        <p>
-                            <a style={{"color":"blue"}} href={link}>{link}</a> &nbsp;&nbsp;
-                            <CopyToClipboard text={link}>
-                              <button type="button" className="primary-btn">Copy</button>
-                            </CopyToClipboard>
-                          </p>
-                    </div>
-                </div>
-            </div>        
-
-          <div className="row">
-
-            {this.state.canastas}
-                    
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="section-title">
+              <h2>My referral link:</h2>
+              <p>
+                <a style={{"color":"blue"}} href={this.state.link}>{this.state.link}</a> &nbsp;&nbsp;
+                <CopyToClipboard text={this.state.link}>
+                  <button type="button" className="primary-btn">Copy</button>
+                </CopyToClipboard>
+              </p>
+            </div>
           </div>
+        </div>    
+
+        <div className="row">
+          <div className="col-lg-4">
+            <div className="section-title">
+              <h2>My invested:</h2>
+              <p>
+                {this.state.invertido} USDT
+              </p>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="section-title">
+              <h2>Earned:</h2>
+              <p>
+              {this.state.ganado} USDT
+              </p>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="section-title">
+              <h2>People:</h2>
+              <p>
+              {this.state.personas}
+              </p>
+            </div>
+          </div>
+        </div>   
+        <hr></hr>
+
+        <div className="row">
+
+          {this.state.canastas}
+                  
+        </div>
 
       </>
       
