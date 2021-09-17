@@ -85,7 +85,6 @@ export default class EarnTron extends Component {
     //console.log(min);
   }
 
-
   async deposit() {
 
     const { level, levelPrice, balanceUSDT, aprovedUSDT, contractUSDT} = this.state;

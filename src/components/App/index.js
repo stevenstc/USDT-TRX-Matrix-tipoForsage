@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import TronWeb from "tronweb";
 
 import Utils from "../../utils";
-import CrowdFunding from "../CrowdFunding";
-import Oficina from "../Oficina";
-import TronLinkInfo from "../TronLinkInfo";
+import Home from "../Home";
+import BackOffice from "../BackOffice";
 import TronLinkGuide from "../TronLinkGuide";
 
 
@@ -104,6 +103,17 @@ class App extends Component {
   }
 
   render() {
+    var getString = "/";
+    var loc = document.location.href;
+    var interrogant = "";
+    //console.log(loc);
+    if(loc.indexOf('?')>0){
+              
+      getString = loc.split('?')[1];
+      getString = getString.split('#')[0];
+      interrogant = "?";
+    }
+
     if (!this.state.tronWeb.installed) return (
       <>
         <div className="container">
@@ -120,36 +130,18 @@ class App extends Component {
       </>
       );
 
-    return (
+      switch (getString) {
+        case "BackOffice": 
+        case "backOffice":
+        case "backoffice": return(<><BackOffice url={interrogant+getString}/></>);
+  
+        case "ViewOffice": 
+        case "viewOffice": 
+        case "viewoffice": return(<><BackOffice url={interrogant+getString}/></>);
+      
+        default:  return(<><Home /></>);
+      }
 
-      <>
-        <section className="hero set-bg" data-setbg="img/hero-bg.jpg" style={{"backgroundImage": "url('img/hero-bg.jpg')"}}>
-          <div className="container">
-              <div className="row">
-                  <div className="col-lg-5">
-                      <div className="hero__text">
-                          <TronLinkInfo tronWeb={window.tronWeb}/>
-                      </div>
-                  </div>
-                  <div className="col-lg-5 offset-lg-2">
-                      <div className="hero__form">
-                          
-                          <CrowdFunding />
-                          
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </section>
-
-        <section className="choose spad">
-          <div className="container">
-            <Oficina /> 
-          </div>
-        </section>
-
-      </>
-    );
 
   }
 }
