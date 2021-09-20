@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/static/js/main.4a60244a.chunk.js",
-    "main.js.map": "/static/js/main.4a60244a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.8ad47052.js",
-    "runtime-main.js.map": "/static/js/runtime-main.8ad47052.js.map",
-    "static/js/2.8a5958a0.chunk.js": "/static/js/2.8a5958a0.chunk.js",
-    "static/js/2.8a5958a0.chunk.js.map": "/static/js/2.8a5958a0.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.b43d5906ca5ed2212a3005695a9fee82.js": "/precache-manifest.b43d5906ca5ed2212a3005695a9fee82.js",
-    "service-worker.js": "/service-worker.js",
-    "static/js/2.8a5958a0.chunk.js.LICENSE.txt": "/static/js/2.8a5958a0.chunk.js.LICENSE.txt",
-    "static/media/TronLinkLogo.png": "/static/media/TronLinkLogo.d3a8f115.png"
+    "main.js": "/USDT-Forsage/static/js/main.4a60244a.chunk.js",
+    "main.js.map": "/USDT-Forsage/static/js/main.4a60244a.chunk.js.map",
+    "runtime-main.js": "/USDT-Forsage/static/js/runtime-main.a3400a79.js",
+    "runtime-main.js.map": "/USDT-Forsage/static/js/runtime-main.a3400a79.js.map",
+    "static/js/2.2afcf270.chunk.js": "/USDT-Forsage/static/js/2.2afcf270.chunk.js",
+    "static/js/2.2afcf270.chunk.js.map": "/USDT-Forsage/static/js/2.2afcf270.chunk.js.map",
+    "index.html": "/USDT-Forsage/index.html",
+    "precache-manifest.ff3006e50d9bca0162b402fd04a908f7.js": "/USDT-Forsage/precache-manifest.ff3006e50d9bca0162b402fd04a908f7.js",
+    "service-worker.js": "/USDT-Forsage/service-worker.js",
+    "static/js/2.2afcf270.chunk.js.LICENSE.txt": "/USDT-Forsage/static/js/2.2afcf270.chunk.js.LICENSE.txt",
+    "static/media/TronLinkLogo.png": "/USDT-Forsage/static/media/TronLinkLogo.d3a8f115.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.8ad47052.js",
-    "static/js/2.8a5958a0.chunk.js",
+    "static/js/runtime-main.a3400a79.js",
+    "static/js/2.2afcf270.chunk.js",
     "static/js/main.4a60244a.chunk.js"
   ]
 }
