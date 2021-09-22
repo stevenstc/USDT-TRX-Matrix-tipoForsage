@@ -41,7 +41,6 @@ export default class Home extends Component {
 
               </div> 
 
-
               <ul className="home-social">
                   <li>
                       <a href="#0"><i className="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
