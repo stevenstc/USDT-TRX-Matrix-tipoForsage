@@ -114,33 +114,51 @@ class App extends Component {
       interrogant = "?";
     }
 
-    if (!this.state.tronWeb.installed) return (
-      <>
-        <div className="container">
-          <TronLinkGuide />
-        </div>
-      </>
-      );
+    
 
-    if (!this.state.tronWeb.loggedIn) return (
-      <>
-        <div className="container">
-          <TronLinkGuide installed />
-        </div>
-      </>
-      );
+    switch (getString) {
+      case "BackOffice": 
+      case "backOffice":
+      case "backoffice": 
+        if (!this.state.tronWeb.installed) return (
+          <>
+            <div className="container">
+              <TronLinkGuide />
+            </div>
+          </>
+          );
+    
+        if (!this.state.tronWeb.loggedIn) return (
+          <>
+            <div className="container">
+              <TronLinkGuide installed />
+            </div>
+          </>
+          );
+        return(<><BackOffice url={interrogant+getString} view={false}/></>);
 
-      switch (getString) {
-        case "BackOffice": 
-        case "backOffice":
-        case "backoffice": return(<><BackOffice url={interrogant+getString}/></>);
-  
-        case "ViewOffice": 
-        case "viewOffice": 
-        case "viewoffice": return(<><BackOffice url={interrogant+getString}/></>);
-      
-        default:  return(<><Home /></>);
-      }
+      case "ViewOffice": 
+      case "viewOffice": 
+      case "viewoffice": 
+        if (!this.state.tronWeb.installed) return (
+          <>
+            <div className="container">
+              <TronLinkGuide />
+            </div>
+          </>
+          );
+    
+        if (!this.state.tronWeb.loggedIn) return (
+          <>
+            <div className="container">
+              <TronLinkGuide installed />
+            </div>
+          </>
+          );
+        return(<><BackOffice url={interrogant+getString} view={true}/></>);
+    
+      default:  return(<><Home /></>);
+    }
 
 
   }

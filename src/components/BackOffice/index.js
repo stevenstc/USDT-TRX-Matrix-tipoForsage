@@ -1,41 +1,56 @@
 import React, { Component } from "react";
+import TronWeb from "tronweb";
 
 import CrowdFunding from "../CrowdFunding";
 import Oficina from "../Oficina";
 import TronLinkInfo from "../TronLinkInfo";
 
+const FOUNDATION_ADDRESS = "TWiWt5SEDzaEqS6kE5gandWMNfxR2B5xzg";
+
+const TRONGRID_API = "https://api.shasta.trongrid.io";
+
+var viewTronweb = new TronWeb(
+  TRONGRID_API, 
+  TRONGRID_API, 
+  TRONGRID_API
+);
+
+viewTronweb.setAddress(FOUNDATION_ADDRESS);
+
+console.log(viewTronweb);
+
 export default class BackOffice extends Component {
   
   render() {
 
+    if (this.props.view === true) {
       return (
         <>
-        <section className="hero set-bg" data-setbg="img/hero-bg.jpg" style={{"backgroundImage": "url('img/hero-bg.jpg')"}}>
-          <div className="container">
-              <div className="row">
-                  <div className="col-lg-5">
-                      <div className="hero__text">
-                          <TronLinkInfo tronWeb={window.tronWeb}/>
-                      </div>
-                  </div>
-                  <div className="col-lg-5 offset-lg-2">
-                      <div className="hero__form">
-                          
-                          <CrowdFunding />
-                          
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </section>
 
-        <section className="choose spad">
-          <div className="container">
-            <Oficina /> 
-          </div>
-        </section>
+          <CrowdFunding />
+    
+          <Oficina /> 
+          
 
       </>
       );
+      
+      
+    }else{
+      return (
+        <>
+
+          <TronLinkInfo tronWeb={window.tronWeb}/>
+
+          <CrowdFunding />
+    
+          <Oficina /> 
+          
+
+      </>
+      );
+    }
+
+      
   }
 }
