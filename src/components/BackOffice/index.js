@@ -17,7 +17,7 @@ var viewTronweb = new TronWeb(
 
 viewTronweb.setAddress(FOUNDATION_ADDRESS);
 
-console.log(viewTronweb);
+//console.log(viewTronweb);
 
 export default class BackOffice extends Component {
   

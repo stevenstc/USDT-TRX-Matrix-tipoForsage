@@ -65,7 +65,7 @@ export default class Home extends Component {
 
             <section id='about' className="s-about">
 
-            <div className="row about-desc" data-aos="fade-up">
+            <div className="row about-desc" >
                 <div className="col-full">
                     <p>
                         Crowdfunding Global Decentralized Platform Based On Smart Contract’s Technology Connects People To Directly Engage In Personal And Business Transactions.
@@ -73,7 +73,7 @@ export default class Home extends Component {
                 </div>
             </div> 
 
-            <div className="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
+            <div className="row about-stats stats block-1-4 block-m-1-2 block-mob-full" >
                     
                 <div className="col-block stats__col ">
                     <div className="stats__count">1505</div>
@@ -100,7 +100,7 @@ export default class Home extends Component {
 
             <section id='services' className="s-services">
 
-            <div className="row section-header has-bottom-sep" data-aos="fade-up">
+            <div className="row section-header has-bottom-sep" >
                 <div className="col-full">
                     <h2 className="display-2">The Next Generation Defi Ecosystem</h2>
                 </div>
@@ -108,7 +108,7 @@ export default class Home extends Component {
 
             <div className="row services-list block-1-2 block-tab-full">
 
-                <div className="col-block service-item" data-aos="fade-up">
+                <div className="col-block service-item" >
                     <div className="service-icon">
                         <i className="icon-paint-brush"></i>
                     </div>
@@ -119,7 +119,7 @@ export default class Home extends Component {
                     </div>
                 </div>
 
-                <div className="col-block service-item" data-aos="fade-up">
+                <div className="col-block service-item" >
                     <div className="service-icon">
                         <i className="icon-group"></i>
                     </div>
@@ -130,7 +130,7 @@ export default class Home extends Component {
                     </div>
                 </div>
 
-                <div className="col-block service-item" data-aos="fade-up">
+                <div className="col-block service-item" >
                     <div className="service-icon">
                         <i className="icon-megaphone"></i>
                     </div>  
@@ -141,7 +141,7 @@ export default class Home extends Component {
                     </div>
                 </div>
 
-                <div className="col-block service-item" data-aos="fade-up">
+                <div className="col-block service-item" >
                     <div className="service-icon">
                         <i className="icon-earth"></i>
                     </div>
@@ -158,17 +158,17 @@ export default class Home extends Component {
 
             <section id="clients" className="s-clients">
 
-            <div className="row section-header" data-aos="fade-up">
+            <div className="row section-header" >
                 <div className="col-full">
                     <h2 className="display-2">FREQUENTLY ASKED QUESTIONS</h2>
                 </div>
             </div> 
 
-            <div className="row clients-testimonials" data-aos="fade-up">
+            <div className="row clients-testimonials" >
                 <div className="col-full">
 
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>What is THE MONOPOLY CLUB?</summary>
 
                             <div className="faq__content">
@@ -178,7 +178,7 @@ export default class Home extends Component {
                         </div>
 
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>How long is THE MONOPOLY CLUB going to work?</summary>
 
                             <div className="faq__content">
@@ -187,7 +187,7 @@ export default class Home extends Component {
                         </details>
                         </div>   
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>Are Smart Contracts Legal in My Country?</summary>
 
                             <div className="faq__content">
@@ -199,7 +199,7 @@ export default class Home extends Component {
                         </details>
                         </div>           
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>Why THE MONOPOLY CLUB is Not a Pyramid?</summary>
 
                             <div className="faq__content">
@@ -216,7 +216,7 @@ export default class Home extends Component {
                         </details>
                         </div>  
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>Do I Need to Withdraw Money from THE MONOPOLY CLUB?</summary>
 
                             <div className="faq__content">
@@ -225,7 +225,7 @@ export default class Home extends Component {
                         </details>
                         </div>
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>Is THE MONOPOLY CLUB a Company?</summary>
 
                             <div className="faq__content">
@@ -234,7 +234,7 @@ export default class Home extends Component {
                         </details>
                         </div>
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>Who Created THE MONOPOLY CLUB?</summary>
 
                             <div className="faq__content">
@@ -244,7 +244,7 @@ export default class Home extends Component {
                         </div>
                         
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>Who Manages The Platform?</summary>
 
                             <div className="faq__content">
@@ -253,7 +253,7 @@ export default class Home extends Component {
                         </details>
                         </div>
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                             <summary>Is THE MONOPOLY CLUB Legal or illegal?</summary>
 
                             <div className="faq__content">
@@ -263,7 +263,7 @@ export default class Home extends Component {
                             </details>
                         </div>
                         <div className="testimonials__slide">
-                            <details close>
+                            <details close="true">
                                 <summary>Can I Join THE MONOPOLY CLUB in My Country?</summary>
                                 <div className="faq__content">
                                     <p>Absolutely, THE MONOPOLY CLUB is international and you can join from all the countries in the world, you just need a mobile device, tablet or laptop and internet connection.</p>

@@ -41,7 +41,7 @@ class App extends Component {
       const timer = setInterval(() => {
         if (tries >= 10) {
 
-          console.log("intento "+tries);
+          //console.log("intento "+tries);
 
           const TRONGRID_API = "https://api.trongrid.io";
 

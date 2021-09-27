@@ -2352,7 +2352,7 @@ html.no-csstransitions .home-content__main {
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 320px) {
     .about-desc {
         font-size: 1.8rem;
     }
