@@ -102,8 +102,7 @@ export default class Home extends Component {
 
             <div className="row section-header has-bottom-sep" data-aos="fade-up">
                 <div className="col-full">
-                    <h3 className="subhead">Now</h3>
-                    <h1 className="display-2">The Next Generation Defi Ecosystem</h1>
+                    <h2 className="display-2">The Next Generation Defi Ecosystem</h2>
                 </div>
             </div> 
 
@@ -161,8 +160,7 @@ export default class Home extends Component {
 
             <div className="row section-header" data-aos="fade-up">
                 <div className="col-full">
-                    <h3 className="subhead">FAQ</h3>
-                    <h1 className="display-2">FREQUENTLY ASKED QUESTIONS</h1>
+                    <h2 className="display-2">FREQUENTLY ASKED QUESTIONS</h2>
                 </div>
             </div> 
 
