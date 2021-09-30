@@ -1,0 +1,118 @@
+.pack {
+    border-radius: 20px;
+    color: white;
+    min-width: 250px;
+    max-width: 250px;
+    max-height: 250px;
+}
+.pack-buy {		
+    background-color: #262626;
+}
+
+.pack-enable {	
+	border: 3px;
+	border-color:rgb(0, 204, 255);
+	border-style: solid;
+}
+.pack-disabled {		
+    background-color: #262626;
+}
+
+.pack:hover {
+	border: 1px;
+	border-color:rgb(0, 204, 255);
+	border-style: solid;
+}
+.pack-ind {	
+	position: absolute;
+	left:0px; 
+	top:-6px;
+	height: 50px;
+	width: 100px;
+}
+.pack-header {	
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	vertical-align: middle;
+	justify-content: center;
+	height: 50px;
+    margin-bottom: 0; 
+	font-size: 16px;
+}
+
+.pack-header-enable{
+    border-bottom: 3px solid rgb(0, 204, 255);
+}
+
+.pack-header-buy, .pack-header-disabled {
+    border-bottom: 3px solid rgb(18,21,30);
+}
+
+.pack-body {	
+    height: 100px;
+	display: flex;
+	flex-wrap: nowrap;
+
+	align-items: center;
+	vertical-align: middle;
+	justify-content: center;
+}
+
+.pack-footer {	
+    height: 50px;
+	display: flex;
+	flex-wrap: nowrap;
+
+	align-items: center;
+	vertical-align: middle;
+	justify-content: center;
+}
+
+.letter {
+	vertical-align: middle;
+}
+
+.pack-title-group {
+	justify-content: center;
+}
+.pack-divider {
+	margin: 3px 0;
+}
+.pack-title {
+	flex: 0.5;
+	font-size: large;
+	margin: 4px;
+}
+.pack-date {
+	flex: 0.3;
+	font-size: small;
+	margin-top: 0;
+}
+
+.pack-image {
+	border-radius: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.pack-like-icon {
+	height: 25px;
+}
+
+.pack-text {
+	vertical-align: middle;
+	justify-content: center;
+	width: 300px;
+	font-size: medium;
+}
+.pack-like-bar {
+	display: flex;
+	align-items: center;
+	margin-top: 4px;
+	justify-content: space-between;
+}
+
+.like-text {
+	font-size: small;
+	margin-left: 10px;
+}
