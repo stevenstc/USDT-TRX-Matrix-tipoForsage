@@ -1,0 +1,13 @@
+@import '../../../../assets/styles/app';
+
+.root {
+}
+
+.table {
+  :global(.table.table-sm) {
+    td {
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+  }
+}
