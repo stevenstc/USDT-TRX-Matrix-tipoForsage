@@ -2301,7 +2301,7 @@ html.no-csstransitions .home-content__main {
         max-width: 600px;
     }
     .stats__count {
-        font-size: 7rem;
+        font-size: 8rem;
     }
     .stats h5 {
         margin-top: 1.2rem;
@@ -2352,7 +2352,7 @@ html.no-csstransitions .home-content__main {
     }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 400px) {
     .about-desc {
         font-size: 1.8rem;
     }
@@ -2730,10 +2730,14 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
  summary {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 600;
+   /* background-color: #fff;*/
     color: #333;
+    padding: 1rem;
+    margin-bottom: 1rem;
     outline: none;
+    border-radius: 0.25rem;
     text-align: left;
     cursor: pointer;
     position: relative;
@@ -2751,17 +2755,15 @@ html.no-csstransitions .home-content__main {
   details > summary::-webkit-details-marker {
     display: none;
   }
-  3. Apply a smooth open animation to the accordion.
   
-  details[open] summary ~ * {
+ 
+details[open] summary ~ * {
     animation: sweep .5s ease-in-out;
   }
   @keyframes sweep {
     0%    {opacity: 0; margin-top: -10px}
     100%  {opacity: 1; margin-top: 0px}
   }
-
-
 
 .s-clients {
     padding-top: 16.2rem;
