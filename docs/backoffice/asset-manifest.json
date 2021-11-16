@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/backoffice/static/js/main.e07313d8.chunk.js",
+    "main.js.map": "/backoffice/static/js/main.e07313d8.chunk.js.map",
+    "runtime-main.js": "/backoffice/static/js/runtime-main.e478e202.js",
+    "runtime-main.js.map": "/backoffice/static/js/runtime-main.e478e202.js.map",
+    "static/js/2.e0e95334.chunk.js": "/backoffice/static/js/2.e0e95334.chunk.js",
+    "static/js/2.e0e95334.chunk.js.map": "/backoffice/static/js/2.e0e95334.chunk.js.map",
+    "index.html": "/backoffice/index.html",
+    "precache-manifest.4c2c0645244645dbb280bc674eea6a28.js": "/backoffice/precache-manifest.4c2c0645244645dbb280bc674eea6a28.js",
+    "service-worker.js": "/backoffice/service-worker.js",
+    "static/js/2.e0e95334.chunk.js.LICENSE.txt": "/backoffice/static/js/2.e0e95334.chunk.js.LICENSE.txt",
+    "static/media/TronLinkLogo.png": "/backoffice/static/media/TronLinkLogo.d3a8f115.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e478e202.js",
+    "static/js/2.e0e95334.chunk.js",
+    "static/js/main.e07313d8.chunk.js"
+  ]
+}
