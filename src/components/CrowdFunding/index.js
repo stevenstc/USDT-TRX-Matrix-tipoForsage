@@ -190,23 +190,42 @@ export default class EarnTron extends Component {
   render() {
     
     return (
-      
-
-        <div className="text-center">
-          <h6>
-            Balance: {this.state.balanceUSDT} <strong>USDT</strong><br />
-          </h6>
-
-          <h3>current level = {this.state.level}</h3>
-
-            <button  onClick={() => this.deposit()} className="primary-btn">{this.state.texto}</button>
-            <p>Price {this.state.levelPrice} USDT</p>
-            <p>You must have ~ 50 TRX to make the transaction</p>
-            
-          
+      <>
+        <div class="row">     
+        <img src="/images/TMC-blanco-verde.svg" width="100%" alt="TMC"></img>
+          <table class="table">
+              <tbody> 
+                  <tr>
+                      <td>
+                          <p style={{fontSize: '18px'}}>Balance</p>
+                          <p style={{fontSize: '18px'}}>Level</p>                                
+                      </td>
+                      <td style={{textAlign: 'right'}}>
+                          <p style={{fontSize: '18px'}}>{this.state.balanceUSDT} <strong>USDT</strong></p>
+                          <p style={{fontSize: '18px'}}>{this.state.level}</p>
+                      </td>
+                  </tr>                        
+              </tbody>
+          </table>
+        </div>      
+        <div class="row">
+        <table class="table">
+              <tbody>
+                  <tr>
+                      <td>
+                          <p style={{fontSize: '16px'}}><button onClick={() => this.deposit()} type="submit" class="auth-btn btn btn-success btn-sm" style={{color: 'white', width: '100%'}}>{this.state.texto}</button></p>
+                      </td>
+                  </tr> 
+                  <tr>
+                      <td>
+                      <p style={{fontSize: '16px'}}>Price {this.state.levelPrice} USDT</p>
+                      <p style={{fontSize: '16px'}}>You must have ~ 50 TRX to make the transaction</p>
+                      </td>
+                  </tr>                        
+              </tbody>
+          </table>               
         </div>
-      
-
+      </>
     );
   }
 }

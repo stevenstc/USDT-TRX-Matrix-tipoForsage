@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import TronWeb from "tronweb";
 
-import Header from "../Header";
-import Footer from "../Footer";
 import Utils from "../../utils";
-import Home from "../../pages/Home";
-import BackOffice from "../../pages/BackOffice";
+import BackOffice from "../BackOffice";
 import TronLinkGuide from "../TronLinkGuide";
-
-
 
 
 const FOUNDATION_ADDRESS = "TWiWt5SEDzaEqS6kE5gandWMNfxR2B5xzg";
@@ -45,7 +40,7 @@ class App extends Component {
       const timer = setInterval(() => {
         if (tries >= 10) {
 
-          //console.log("intento "+tries);
+          console.log("intento "+tries);
 
           const TRONGRID_API = "https://api.trongrid.io";
 
@@ -104,68 +99,53 @@ class App extends Component {
     }
 
     Utils.setTronWeb(window.tronWeb);
+
+    if(!this.state.tronWeb.loggedIn){
+        document.location.reload();
+    }
   }
 
   render() {
-    var opt = "/";
+    var getString = "/";
     var loc = document.location.href;
     var interrogant = "";
-    if(loc.indexOf('?')>0){              
-      opt = loc.split('?')[1];
-      opt = opt.split('#')[0].toLowerCase();
+    //console.log(loc);
+    if(loc.indexOf('?')>0){
+              
+      getString = loc.split('?')[1];
+      getString = getString.split('#')[0];
       interrogant = "?";
     }
 
-    let content = <Home/>;
-   console.log(opt);
-    switch (opt) {
-      case "backoffice": 
-        if (!this.state.tronWeb.installed) 
-        return(
-          <>
-            <Header />
-            <div className="container"> <TronLinkGuide /></div>
-            <Footer />
-          </>);
-        else if (!this.state.tronWeb.loggedIn)          
-          return(
-            <>
-              <Header />
-              <div className="container"> <TronLinkGuide installed /></div>
-              <Footer />
-            </>);
-        else
-        return(
-          <>
-            <BackOffice url={interrogant + opt} view={false}/>
-          </>);
-      case "viewoffice": 
-        if (!this.state.tronWeb.installed) 
-        return(
-          <>
-            <Header />
-            <div className="container"> <TronLinkGuide /></div>
-            <Footer />
-          </>);   
-        else if (!this.state.tronWeb.loggedIn)         
-          return(
-          <>
-            <Header />
-            <div className="container"> <TronLinkGuide installed /></div>
-            <Footer />
-          </>);         
-        else
-          return(
-          <>
-              <BackOffice url={interrogant + opt} view={true}/>
-          </>);
-    
-      default:   return(<>
-        <Header />
-             <Home/>
-        <Footer />
-     </>);
+    if (!this.state.tronWeb.installed) return (
+      <>
+        <div className="container">
+          <TronLinkGuide />
+        </div>
+      </>
+      );
+
+    if (!this.state.tronWeb.loggedIn) return (
+      <>
+        <div className="container">
+          <TronLinkGuide installed />
+        </div>
+      </>
+      );
+
+      switch (getString) {
+        case "BackOffice": 
+        case "backOffice":
+        case "backoffice": return(<BackOffice url={interrogant+getString}/>);
+  
+        case "ViewOffice": 
+        case "viewOffice": 
+        case "viewoffice": return(<BackOffice url={interrogant+getString}/>);
+      
+        default:  return(<BackOffice url={interrogant+getString}/>);
       }
+
+
   }
 }
 export default App;

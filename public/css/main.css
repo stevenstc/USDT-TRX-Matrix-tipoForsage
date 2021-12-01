@@ -418,6 +418,73 @@ img.pull-left {
 }
 
 
+/* ------------------------------------------------------------------- 
+ * ## tables
+ * ------------------------------------------------------------------- */
+table {
+    border-width: 0;
+    width: 100%;
+    max-width: 100%;
+    font-family: "lora-regular", serif;
+}
+
+th, td {
+    padding: 1.5rem 3rem;
+    text-align: left;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+th {
+    color: #000000;
+    font-family: "montserrat-bold", sans-serif;
+}
+
+td {
+    line-height: 1.5;
+}
+
+th:first-child, td:first-child {
+    padding-left: 0;
+}
+
+th:last-child, td:last-child {
+    padding-right: 0;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* ------------------------------------------------------------------- 
+ * ## Spacing 
+ * ------------------------------------------------------------------- */
+button, .btn {
+    margin-bottom: 1.2rem;
+}
+
+fieldset {
+    margin-bottom: 1.5rem;
+}
+
+input,
+textarea,
+select,
+pre,
+blockquote,
+figure,
+table,
+p,
+ul,
+ol,
+dl,
+form,
+.video-container,
+.cl-custom-select {
+    margin-bottom: 3rem;
+}
+
 
 /* ------------------------------------------------------------------- 
  * ## pace.js styles - minimal
@@ -531,6 +598,143 @@ img.pull-left {
 }
 
 
+
+/* ===================================================================
+ * # forms
+ *
+ * ------------------------------------------------------------------- */
+fieldset {
+    border: none;
+}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+    display: block;
+    height: 6rem;
+    padding: 1.5rem 0;
+    border: 0;
+    outline: none;
+    color: #333333;
+    font-family: "montserrat-light", sans-serif;
+    font-size: 1.4rem;
+    line-height: 3rem;
+    max-width: 100%;
+    background: transparent;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.cl-custom-select {
+    position: relative;
+    padding: 0;
+}
+
+.cl-custom-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    margin: 0;
+    line-height: 3rem;
+    vertical-align: middle;
+}
+
+.cl-custom-select select option {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.cl-custom-select select::-ms-expand {
+    display: none;
+}
+
+.cl-custom-select::after {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    border-right: 2px solid rgba(0, 0, 0, 0.5);
+    content: '';
+    display: block;
+    height: 8px;
+    width: 8px;
+    margin-top: -7px;
+    pointer-events: none;
+    position: absolute;
+    right: 2.4rem;
+    top: 50%;
+    -webkit-transform-origin: 66% 66%;
+    -ms-transform-origin: 66% 66%;
+    transform-origin: 66% 66%;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+}
+
+
+/* IE9 and below */
+
+.oldie .cl-custom-select::after {
+    display: none;
+}
+
+textarea {
+    min-height: 25rem;
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    color: #000000;
+    border-bottom: 2px solid black;
+}
+
+label, legend {
+    font-family: "montserrat-regular", sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: .9rem;
+    line-height: 1.714;
+    color: #000000;
+    display: block;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    display: inline;
+}
+
+label > .label-text {
+    display: inline-block;
+    margin-left: 1rem;
+    font-family: "montserrat-regular", sans-serif;
+    font-weight: normal;
+    line-height: inherit;
+}
+
+label > input[type="checkbox"], 
+label > input[type="radio"] {
+    margin: 0;
+    position: relative;
+    top: .15rem;
+}
+
+
 /* ------------------------------------------------------------------- 
  * ## style placeholder text
  * ------------------------------------------------------------------- */
@@ -572,6 +776,127 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+
+
+/* ===================================================================
+ * # buttons
+ *
+ * ------------------------------------------------------------------- */
+.btn,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    display: inline-block;
+    font-family: "montserrat-medium", sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    height: 5.4rem;
+    line-height: calc(5.4rem - .4rem);
+    padding: 0 3rem;
+    margin: 0 .3rem 1.2rem 0;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #c5c5c5;
+    border: .2rem solid #c5c5c5;
+}
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.btn:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+    background-color: #b8b8b8;
+    border-color: #b8b8b8;
+    color: #000000;
+    outline: 0;
+}
+
+
+/* button primary
+ * ------------------------------------------------- */
+
+.btn.btn--primary,
+button.btn--primary,
+input[type="submit"].btn--primary,
+input[type="reset"].btn--primary,
+input[type="button"].btn--primary {
+    background: #39b54a;
+    border-color: #39b54a;
+    color: #FFFFFF;
+}
+
+.btn.btn--primary:hover,
+button.btn--primary:hover,
+input[type="submit"].btn--primary:hover,
+input[type="reset"].btn--primary:hover,
+input[type="button"].btn--primary:hover,
+.btn.btn--primary:focus,
+button.btn--primary:focus,
+input[type="submit"].btn--primary:focus,
+input[type="reset"].btn--primary:focus,
+input[type="button"].btn--primary:focus {
+    background: #33a242;
+    border-color: #33a242;
+}
+
+
+/* button modifiers
+ * ------------------------------------------------- */
+
+.btn.full-width, button.full-width {
+    width: 100%;
+    margin-right: 0;
+}
+
+.btn--medium, button.btn--medium {
+    height: 5.7rem !important;
+    line-height: calc(5.7rem - .4rem) !important;
+}
+
+.btn--large, button.btn--large {
+    height: 6rem !important;
+    line-height: calc(6rem - .4rem) !important;
+}
+
+.btn--stroke, button.btn--stroke {
+    background: transparent !important;
+    border: 0.2rem solid #39b54a;
+    color: #39b54a;
+}
+
+.btn--stroke:hover, button.btn--stroke:hover {
+    border: 0.2rem solid #000000;
+    color: #000000;
+}
+
+.btn--pill, button.btn--pill {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+    border-radius: 1000px !important;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+
+/* =================================================================== 
+ * # additional components
+ *
+ * ------------------------------------------------------------------- */
 
 
 /* ------------------------------------------------------------------- 
@@ -1347,8 +1672,8 @@ select:-webkit-autofill:focus {
     display: block;
     position: absolute;
     top: 0;
-    left: -90px;
-    width: 100px;
+    left: -70px;
+    width: 70px;
     padding-left: 12px;
 }
 
@@ -1460,7 +1785,6 @@ select:-webkit-autofill:focus {
     width: 100%;
     height: 100%;
     vertical-align: middle;
-    padding-left: 15.6rem;
     padding-bottom: 15.6rem;
     position: relative;
     overflow: hidden;
@@ -1498,10 +1822,8 @@ select:-webkit-autofill:focus {
 
 .home-content__buttons .btn {
     width: 215px;
-    height:50px;
     border-color: #FFFFFF;
-    color: #FFFFFF;    
-    padding-top: 10px;
+    color: #FFFFFF;
     margin: 1.5rem 1.5rem 0 0;
     letter-spacing: .25rem;
     -webkit-transition: all 0.5s ease-in-out;
@@ -1878,7 +2200,6 @@ html.no-csstransitions .home-content__main {
 .s-about {
     padding-top: 16.2rem;
     padding-bottom: 9rem;
-    padding-left: 25rem;
     background-color: #39b54a;
     color: #010507;
     position: relative;
@@ -1980,7 +2301,7 @@ html.no-csstransitions .home-content__main {
         max-width: 600px;
     }
     .stats__count {
-        font-size: 7rem;
+        font-size: 8rem;
     }
     .stats h5 {
         margin-top: 1.2rem;
@@ -2031,7 +2352,7 @@ html.no-csstransitions .home-content__main {
     }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 400px) {
     .about-desc {
         font-size: 1.8rem;
     }
@@ -2049,7 +2370,6 @@ html.no-csstransitions .home-content__main {
 .s-services {
     padding-top: 16.2rem;
     padding-bottom: 13.2rem;
-    padding-left: 25rem;
     background-color: #FFFFFF;
     color: #757575;
     position: relative;
@@ -2410,10 +2730,14 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
  summary {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 600;
+   /* background-color: #fff;*/
     color: #333;
+    padding: 1rem;
+    margin-bottom: 1rem;
     outline: none;
+    border-radius: 0.25rem;
     text-align: left;
     cursor: pointer;
     position: relative;
@@ -2431,9 +2755,9 @@ html.no-csstransitions .home-content__main {
   details > summary::-webkit-details-marker {
     display: none;
   }
-  3. Apply a smooth open animation to the accordion.
   
-  details[open] summary ~ * {
+ 
+details[open] summary ~ * {
     animation: sweep .5s ease-in-out;
   }
   @keyframes sweep {
@@ -2441,12 +2765,9 @@ html.no-csstransitions .home-content__main {
     100%  {opacity: 1; margin-top: 0px}
   }
 
-
-
 .s-clients {
     padding-top: 16.2rem;
     padding-bottom: 16.8rem;
-    padding-left: 25rem;
     background-color: #e6e6e6;
     color: #757575;
     position: relative;
