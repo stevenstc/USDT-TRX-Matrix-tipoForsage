@@ -1842,6 +1842,33 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     color: #000000;
 }
 
+
+.home-content__buttons2 {
+    padding-top: 6rem;
+    text-align: left;
+}
+
+.home-content__buttons2 .btn {
+    width: 215px;
+    border-color: #FFFFFF;
+    background: #FFFFFF !important;
+    color: #000000;
+    margin: 1.5rem 1.5rem 0 0;
+    letter-spacing: .25rem;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.home-content__buttons2 .btn:last-child {
+    margin-right: 0;
+}
+
+.home-content__buttons2 .btn:hover, 
+.home-content__buttons2 .btn:focus {
+    background: #9c9c9c !important;
+    color: #000000;
+}
+
 .home-content__scroll {
     position: absolute;
     right: 9.5rem;
