@@ -176,7 +176,7 @@ export default class EarnTron extends Component {
 
   async componentDidMount() {
     await Utils.setContract(window.tronWeb, contractAddress);
-    setInterval(() => this.Link(), 1 * 1000);
+    setInterval(() => this.Link(), 3 * 1000);
     setInterval(() => this.Investors(), 7 * 1000);
   }
 
@@ -278,77 +278,77 @@ export default class EarnTron extends Component {
 
         //console.log(ganado);
         canasta[i-1] = (
-          <div class="col-lg-4"  key={"level"+i}>
-              <section class="widget Widget_widget__32uL4 widget-auth mx-auto pack pack-enable">
-                  <header class="Widget_title__1U9X_">
-                      <div class="pack-header pack-header-enable">
-                          <div class="pack-ind"><span class="badge badge-dark-no-border">{i}</span></div>
-                          <div class="text-center mb-sm" style={{padding: '5px'}}><h6>{"       "}{20 ** i}</h6></div>
+          <div className="col-lg-4"  key={"level"+i}>
+              <section className="widget Widget_widget__32uL4 widget-auth mx-auto pack pack-enable">
+                  <header className="Widget_title__1U9X_">
+                      <div className="pack-header pack-header-enable">
+                          <div className="pack-ind"><span className="badge badge-dark-no-border">{i}</span></div>
+                          <div className="text-center mb-sm" style={{padding: '5px'}}><h6>{"       "}{levelPrice[i]}</h6></div>
                       </div>
                   </header>
-                  <div aria-hidden="false" class="rah-static rah-static--height-auto" style={{height: 'auto', overflow: 'visible'}}>
+                  <div aria-hidden="false" className="rah-static rah-static--height-auto" style={{height: 'auto', overflow: 'visible'}}>
                       <div>
-                          <div class="Widget_widgetBody__34soD widget-body">
-                              <div class="pack-body">
-                                  <div class="mt row">
-                                      <span class={"badge-left badge " + estilo1}><i class="fa fa-users"></i></span>
-                                      <span class={"badge-center badge " + estilo2}><i class="fa fa-users"></i></span>
-                                      <span class={"badge-right badge  "  + estilo3}><i class="fa fa-users"></i></span>
+                          <div className="Widget_widgetBody__34soD widget-body">
+                              <div className="pack-body">
+                                  <div className="mt row">
+                                      <span className={"badge-left badge " + estilo1}><i className="fa fa-users"></i></span>
+                                      <span className={"badge-center badge " + estilo2}><i className="fa fa-users"></i></span>
+                                      <span className={"badge-right badge  "  + estilo3}><i className="fa fa-users"></i></span>
                                   </div>
-                                  <div class="mt row"></div>
-                                  <div class="mt row"></div>
-                                  <div class="mt row">
-                                  <div class="text-center mb-sm" style={{position:'relative',left: '20%'}}><button type="submit" class="auth-btn btn btn-success" style={{color: 'white', width:'100%'}}>Buyed</button></div>
+                                  <div className="mt row"></div>
+                                  <div className="mt row"></div>
+                                  <div className="mt row">
+                                  <div className="text-center mb-sm" style={{position:'relative',left: '20%'}}><button type="submit" className="auth-btn btn btn-success" style={{color: 'white', width:'100%'}}>Buyed</button></div>
                                     
                                   </div>
                               </div>
                               <footer>
-                                  <div color="transparent" class="btn-xs float-left py-0" id="load-parthers-btn"><i class="fa fa-users"></i> {matrix[1].length+(matrix[3]*3)}</div>
-                                  <div color="transparent" class="btn-xs float-right py-0" id="load-notifications-btn"><i class="fa fa-refresh"></i> {matrix[3]}</div>
+                                  <div color="transparent" className="btn-xs float-left py-0" id="load-parthers-btn"><i className="fa fa-users"></i> {matrix[1].length+(matrix[3]*3)}</div>
+                                  <div color="transparent" className="btn-xs float-right py-0" id="load-notifications-btn"><i className="fa fa-refresh"></i> {matrix[3]}</div>
                               </footer>
                           </div>
                       </div>
                   </div>
               </section>
-              <div class="Widget_widgetBackground__1F6dp" style={{display: 'none'}}></div>
+              <div className="Widget_widgetBackground__1F6dp" style={{display: 'none'}}></div>
           </div>
         );
 
       } else {
         canasta[i-1] = (          
-              <div class="col-lg-4"  key={"level"+i}>
-              <section class="widget Widget_widget__32uL4 widget-auth mx-auto pack pack-enable">
-                  <header class="Widget_title__1U9X_">
-                      <div class="pack-header pack-header-enable">
-                          <div class="pack-ind"><span class="badge badge-dark-no-border">{i}</span></div>
-                          <div class="text-center mb-sm" style={{padding: '5px'}}><h6>{20 ** i}</h6></div>
+              <div className="col-lg-4"  key={"level"+i}>
+              <section className="widget Widget_widget__32uL4 widget-auth mx-auto pack pack-enable">
+                  <header className="Widget_title__1U9X_">
+                      <div className="pack-header pack-header-enable">
+                          <div className="pack-ind"><span className="badge badge-dark-no-border">{i}</span></div>
+                          <div className="text-center mb-sm" style={{padding: '5px'}}><h6>{levelPrice[i]}</h6></div>
                       </div>
                   </header>
-                  <div aria-hidden="false" class="rah-static rah-static--height-auto" style={{height: 'auto', overflow: 'visible'}}>
+                  <div aria-hidden="false" className="rah-static rah-static--height-auto" style={{height: 'auto', overflow: 'visible'}}>
                       <div>
-                          <div class="Widget_widgetBody__34soD widget-body">
-                              <div class="pack-body">
-                                  <div class="mt row">
-                                      <span class={"badge-left badge badge-gray" + estilo1}><i class="fa fa-users"></i></span>
-                                      <span class={"badge-center badge badge-gray" + estilo2}><i class="fa fa-users"></i></span>
-                                      <span class={"badge-right badge badge-gray" + estilo3}><i class="fa fa-users"></i></span>
+                          <div className="Widget_widgetBody__34soD widget-body">
+                              <div className="pack-body">
+                                  <div className="mt row">
+                                      <span className={"badge-left badge badge-gray" + estilo1}><i className="fa fa-users"></i></span>
+                                      <span className={"badge-center badge badge-gray" + estilo2}><i className="fa fa-users"></i></span>
+                                      <span className={"badge-right badge badge-gray" + estilo3}><i className="fa fa-users"></i></span>
                                   </div>
-                                  <div class="mt row"></div>
-                                  <div class="mt row"></div>
-                                  <div class="mt row">
-                                  <div class="text-center mb-sm" style={{position:'relative',left: '20%'}}><button type="submit" class="auth-btn btn btn-success" style={{color: 'white', width:'100%'}}>Buy level</button></div>
+                                  <div className="mt row"></div>
+                                  <div className="mt row"></div>
+                                  <div className="mt row">
+                                  <div className="text-center mb-sm" style={{position:'relative',left: '20%'}}><button type="submit" className="auth-btn btn btn-success" style={{color: 'white', width:'100%'}}>Buy level</button></div>
                                     
                                   </div>
                               </div>
                               <footer>
-                                  <div color="transparent" class="btn-xs float-left py-0" id="load-parthers-btn"><i class="fa fa-users"></i> 0</div>
-                                  <div color="transparent" class="btn-xs float-right py-0" id="load-notifications-btn"><i class="fa fa-refresh"></i> 0</div>
+                                  <div color="transparent" className="btn-xs float-left py-0" id="load-parthers-btn"><i className="fa fa-users"></i> 0</div>
+                                  <div color="transparent" className="btn-xs float-right py-0" id="load-notifications-btn"><i className="fa fa-refresh"></i> 0</div>
                               </footer>
                           </div>
                       </div>
                   </div>
               </section>
-              <div class="Widget_widgetBackground__1F6dp" style={{display: 'none'}}></div>
+              <div className="Widget_widgetBackground__1F6dp" style={{display: 'none'}}></div>
           </div>
         );
       }
@@ -371,10 +371,10 @@ export default class EarnTron extends Component {
   }
 
   render() {
-    return (<main class="Layout_content__3Ygen">              
-          <section class="widget Widget_widget__32uL4">
-            <header class="Widget_title__1U9X_" style={{marginLeft:'30px', padding:'10px'}}>
-                            <header class="dashboard-header">
+    return (<main className="Layout_content__3Ygen">              
+          <section className="widget Widget_widget__32uL4">
+            <header className="Widget_title__1U9X_" style={{marginLeft:'30px', padding:'10px'}}>
+                            <header className="dashboard-header">
                                 
             <div className="row">
             <div className="col-lg-4" >
@@ -404,25 +404,25 @@ export default class EarnTron extends Component {
            </div>
                             </header>
                         </header>
-              <div aria-hidden="false" class="rah-static rah-static--height-auto" style={{height: 'auto', overflow: 'visible'}}>
-              <div class="Widget_widgetBody__34soD widget-body">
-                          <div class="row">
+              <div aria-hidden="false" className="rah-static rah-static--height-auto" style={{height: 'auto', overflow: 'visible'}}>
+              <div className="Widget_widgetBody__34soD widget-body">
+                          <div className="row">
                             {this.state.canastas}
                           </div>
-                          <footer class="text-sm card-footer" style={{height: '50px', maxHeight: '50px'}}>
-                              <div class="mt row">
-                                  <div class="col-12 col-md-3">
-                                      <div color="transparent" class="btn-xs float-left py-0" id="load-notifications-btn" style={{height: '45px', maxHeight: '45px'}}><i class="fa fa-refresh"></i> Recycle count</div>
+                          <footer className="text-sm card-footer" style={{height: '50px', maxHeight: '50px'}}>
+                              <div className="mt row">
+                                  <div className="col-12 col-md-3">
+                                      <div color="transparent" className="btn-xs float-left py-0" id="load-notifications-btn" style={{height: '45px', maxHeight: '45px'}}><i className="fa fa-refresh"></i> Recycle count</div>
                                   </div>
-                                  <div class="col-12 col-md-3">
-                                      <div color="transparent" class="btn-xs float-left py-0" id="load-notifications-btn" style={{height: '45px', maxHeight: '45px'}}><i class="fa fa-users"></i> Number partners in the slot</div>
+                                  <div className="col-12 col-md-3">
+                                      <div color="transparent" className="btn-xs float-left py-0" id="load-notifications-btn" style={{height: '45px', maxHeight: '45px'}}><i className="fa fa-users"></i> Number partners in the slot</div>
                                   </div>
                               </div>
                           </footer>
                       </div>
               </div>
           </section>
-          <div class="Widget_widgetBackground__1F6dp" style={{display: 'none'}}></div>              
+          <div className="Widget_widgetBackground__1F6dp" style={{display: 'none'}}></div>              
         </main>   
     );
   }

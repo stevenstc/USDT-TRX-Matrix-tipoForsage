@@ -7,8 +7,8 @@ export default class BackOffice extends Component {
   render() {
 
       return (        
-    <div class="Layout_root__tsDUs">
-        <div class="Layout_wrap__3suIr">
+    <div className="Layout_root__tsDUs">
+        <div className="Layout_wrap__3suIr">
             <GeneralInfo />
             <Oficina />
         </div>

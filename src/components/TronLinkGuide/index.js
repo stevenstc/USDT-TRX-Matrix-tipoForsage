@@ -2,7 +2,6 @@ import React from 'react';
 
 import TronLinkLogo from './TronLinkLogo.png';
 
-
 const WEBSTORE_URL = 'https://chrome.google.com/webstore/detail/ibnejdfjmmkpcnlpebklmnkoeoihofec/';
 
 const logo = (
@@ -16,9 +15,7 @@ const openTronLink = () => {
 };
 
 const TronLinkGuide = props => {
-    const {
-        installed = false
-    } = props;
+    var installed = props;
 
     if(!installed) {
         return (

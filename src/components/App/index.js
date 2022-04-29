@@ -72,7 +72,7 @@ class App extends Component {
         });
 
         resolve();
-      }, 1000);
+      }, 3000);
     });
 
     if (!this.state.tronWeb.loggedIn) {
@@ -99,10 +99,6 @@ class App extends Component {
     }
 
     Utils.setTronWeb(window.tronWeb);
-
-    if(!this.state.tronWeb.loggedIn){
-        document.location.reload();
-    }
   }
 
   render() {

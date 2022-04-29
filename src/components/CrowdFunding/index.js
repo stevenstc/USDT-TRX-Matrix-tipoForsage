@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Utils from "../../utils";
 import contractAddress from "../Contract";
 
+
 export default class EarnTron extends Component {
   constructor(props) {
     super(props);
@@ -59,7 +60,14 @@ export default class EarnTron extends Component {
 
     //console.log(aproved);
 
-    aproved = parseInt(aproved.remaining._hex)/10**6;
+    if(aproved.remaining){
+      aproved = parseInt(aproved.remaining._hex)/10**6;
+
+    }else{
+      aproved = parseInt(aproved._hex)/10**6;
+
+    }
+
 
     var text;
     if(aproved > 0){
@@ -191,9 +199,9 @@ export default class EarnTron extends Component {
     
     return (
       <>
-        <div class="row">     
+        <div className="row">     
         <img src="/images/TMC-blanco-verde.svg" width="100%" alt="TMC"></img>
-          <table class="table">
+          <table className="table">
               <tbody> 
                   <tr>
                       <td>
@@ -208,12 +216,12 @@ export default class EarnTron extends Component {
               </tbody>
           </table>
         </div>      
-        <div class="row">
-        <table class="table">
+        <div className="row">
+        <table className="table">
               <tbody>
                   <tr>
                       <td>
-                          <p style={{fontSize: '16px'}}><button onClick={() => this.deposit()} type="submit" class="auth-btn btn btn-success btn-sm" style={{color: 'white', width: '100%'}}>{this.state.texto}</button></p>
+                          <p style={{fontSize: '16px'}}><button onClick={() => this.deposit()} type="submit" className="auth-btn btn btn-success btn-sm" style={{color: 'white', width: '100%'}}>{this.state.texto}</button></p>
                       </td>
                   </tr> 
                   <tr>
