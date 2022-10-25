@@ -273,8 +273,6 @@ export default class EarnTron extends Component {
           default:
             break;
         }
-        if (rango) {
-        }
 
         //console.log(ganado);
         canasta[i-1] = (
@@ -336,7 +334,7 @@ export default class EarnTron extends Component {
                                   <div className="mt row"></div>
                                   <div className="mt row"></div>
                                   <div className="mt row">
-                                  <div className="text-center mb-sm" style={{position:'relative',left: '20%'}}><button type="submit" className="auth-btn btn btn-success" style={{color: 'white', width:'100%'}}>Buy level</button></div>
+                                  <div className="text-center mb-sm" style={{position:'relative',left: '20%'}}><button onClick={()=>{/*Utils.contract.buyNewLevel(i,levelPrice[i]+"000000").send()*/}} type="submit" className="auth-btn btn btn-success" style={{color: 'white', width:'100%'}}>Buy level</button></div>
                                     
                                   </div>
                               </div>
