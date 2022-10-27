@@ -182,7 +182,7 @@ export default class EarnTron extends Component {
 
   async Link() {
     let mydireccion = await window.tronWeb.trx.getAccount();
-    console.log(mydireccion);
+    //console.log(mydireccion);
     mydireccion = window.tronWeb.address.fromHex(mydireccion.address);
 
     var user = await Utils.contract.users(mydireccion).call();
@@ -221,8 +221,8 @@ export default class EarnTron extends Component {
     levelPrice[1] = 20;
     ownerPrice[1] = 0;
     ownerPrice[4] = 4;
-    var i;
-    for (i = 2; i <= LAST_LEVEL; i++) {
+
+    for (let i = 2; i <= LAST_LEVEL; i++) {
       levelPrice[i] = levelPrice[i - 1] * 2;
       if (i >= 5) {
         ownerPrice[i] = ownerPrice[i - 1] * 2;
@@ -236,16 +236,21 @@ export default class EarnTron extends Component {
     //console.log(levelPrice);
     //console.log(ownerPrice);
 
-    for (i = 1; i <= LAST_LEVEL; i++) {
-      if (await Utils.contract.usersActiveX3Levels(direccion, i).call()) {
-        invertido += levelPrice[i];
+    for (let index = 1; index <= LAST_LEVEL; index++) {
 
-        var matrix = await Utils.contract.usersX3Matrix(direccion, i).call();
+      let precio = levelPrice[index];
+      let nivel = index;
+
+
+      if (await Utils.contract.usersActiveX3Levels(direccion, index).call()) {
+        invertido += levelPrice[index];
+
+        var matrix = await Utils.contract.usersX3Matrix(direccion, index).call();
         matrix[3] = parseInt(matrix[3]._hex);
 
         personas += matrix[1].length + matrix[3] * 3;
 
-        ganado += (matrix[1].length + matrix[3] * 3) * ownerPrice[i];
+        ganado += (matrix[1].length + matrix[3] * 3) * ownerPrice[index];
 
         var rango = matrix[1].length + ((matrix[3] * 3) % 3);
         var estilo1, estilo2, estilo3;
@@ -274,14 +279,13 @@ export default class EarnTron extends Component {
             break;
         }
 
-        //console.log(ganado);
-        canasta[i-1] = (
-          <div className="col-lg-4"  key={"level"+i}>
+        canasta[index-1] = (
+          <div className="col-lg-4"  key={"level"+index}>
               <section className="widget Widget_widget__32uL4 widget-auth mx-auto pack pack-enable">
                   <header className="Widget_title__1U9X_">
                       <div className="pack-header pack-header-enable">
-                          <div className="pack-ind"><span className="badge badge-dark-no-border">{i}</span></div>
-                          <div className="text-center mb-sm" style={{padding: '5px'}}><h6>{"       "}{levelPrice[i]}</h6></div>
+                          <div className="pack-ind"><span className="badge badge-dark-no-border">{index}</span></div>
+                          <div className="text-center mb-sm" style={{padding: '5px'}}><h6>{"       "}{levelPrice[index]}</h6></div>
                       </div>
                   </header>
                   <div aria-hidden="false" className="rah-static rah-static--height-auto" style={{height: 'auto', overflow: 'visible'}}>
@@ -313,13 +317,13 @@ export default class EarnTron extends Component {
         );
 
       } else {
-        canasta[i-1] = (          
-              <div className="col-lg-4"  key={"level"+i}>
+        canasta[index-1] = (          
+              <div className="col-lg-4"  key={"level"+index}>
               <section className="widget Widget_widget__32uL4 widget-auth mx-auto pack pack-enable">
                   <header className="Widget_title__1U9X_">
                       <div className="pack-header pack-header-enable">
-                          <div className="pack-ind"><span className="badge badge-dark-no-border">{i}</span></div>
-                          <div className="text-center mb-sm" style={{padding: '5px'}}><h6>{levelPrice[i]}</h6></div>
+                          <div className="pack-ind"><span className="badge badge-dark-no-border">{index}</span></div>
+                          <div className="text-center mb-sm" style={{padding: '5px'}}><h6>{levelPrice[index]}</h6></div>
                       </div>
                   </header>
                   <div aria-hidden="false" className="rah-static rah-static--height-auto" style={{height: 'auto', overflow: 'visible'}}>
@@ -334,7 +338,7 @@ export default class EarnTron extends Component {
                                   <div className="mt row"></div>
                                   <div className="mt row"></div>
                                   <div className="mt row">
-                                  <div className="text-center mb-sm" style={{position:'relative',left: '20%'}}><button onClick={()=>{/*Utils.contract.buyNewLevel(i,levelPrice[i]+"000000").send()*/}} type="submit" className="auth-btn btn btn-success" style={{color: 'white', width:'100%'}}>Buy level</button></div>
+                                  <div className="text-center mb-sm" style={{position:'relative',left: '20%'}}><button onClick={()=>{Utils.contract.buyNewLevel(nivel,precio+"000000").send()}} type="submit" className="auth-btn btn btn-success" style={{color: 'white', width:'100%'}}>Buy level</button></div>
                                     
                                   </div>
                               </div>

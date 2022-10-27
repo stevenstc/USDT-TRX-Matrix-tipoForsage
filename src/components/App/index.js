@@ -75,30 +75,31 @@ class App extends Component {
       }, 3000);
     });
 
-    if (!this.state.tronWeb.loggedIn) {
-      // Set default address (foundation address) used for contract calls
-      // Directly overwrites the address object if TronLink disabled the
-      // function call
-      window.tronWeb.defaultAddress = {
-        hex: window.tronWeb.address.toHex(FOUNDATION_ADDRESS),
-        base58: FOUNDATION_ADDRESS
-      };
-
-      window.tronWeb.on("addressChange", () => {
-        if (this.state.tronWeb.loggedIn) {
-          return;
-        }
-
-        this.setState({
-          tronWeb: {
-            installed: true,
-            loggedIn: true
+    setInterval(()=>{
+      if (!this.state.tronWeb.loggedIn) {
+        window.tronWeb.defaultAddress = {
+          hex: window.tronWeb.address.toHex(FOUNDATION_ADDRESS),
+          base58: FOUNDATION_ADDRESS
+        };
+  
+        window.tronWeb.on("addressChange", () => {
+          if (this.state.tronWeb.loggedIn) {
+            return;
           }
+  
+          this.setState({
+            tronWeb: {
+              installed: true,
+              loggedIn: true
+            }
+          });
         });
-      });
-    }
+      }
+  
+      Utils.setTronWeb(window.tronWeb);
+    },3*1000)
 
-    Utils.setTronWeb(window.tronWeb);
+    
   }
 
   render() {
