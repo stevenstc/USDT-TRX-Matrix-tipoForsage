@@ -32,11 +32,9 @@ export default class EarnTron extends Component {
 
   async estado(){
     
-    var accountAddress = window.tronWeb.defaultAddress.base58
+    const accountAddress = window.tronWeb.defaultAddress.base58
 
-    //console.log(accountAddress);
-
-    var activeLevels = 0;
+    let activeLevels = 0;
 
     for (var i = 15; i >= 0; i--) {
 
@@ -46,17 +44,17 @@ export default class EarnTron extends Component {
       
     }
 
-    var levelPrice = await Utils.contract.levelPrice(activeLevels+1).call();
+    let levelPrice = await Utils.contract.levelPrice(activeLevels+1).call();
 
-    var tokenAddress = await Utils.contract.tokenUSDT().call();
+    let tokenAddress = await Utils.contract.tokenUSDT().call();
 
     const contractUSDT = await window.tronWeb.contract().at(tokenAddress);
 
-    var balanceUSDT = await contractUSDT.balanceOf(accountAddress).call();
+    let balanceUSDT = await contractUSDT.balanceOf(accountAddress).call();
 
     balanceUSDT = parseInt(balanceUSDT._hex)/10**6;
 
-    var aproved = await contractUSDT.allowance(accountAddress, contractAddress).call();
+    let aproved = await contractUSDT.allowance(accountAddress, contractAddress).call();
 
     //console.log(aproved);
 
