@@ -25,6 +25,7 @@ export default class BackOffice extends Component {
             ganado: 0,
             my: 0,
             withdrawn: 0,
+            personas: 0
 
         };
 
@@ -321,7 +322,7 @@ export default class BackOffice extends Component {
                 }
 
                 canasta[index - 1] = (
-                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index}>
+                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "18rem"}}>
                         <div className="card-body">
                             <h5 className="card-title">{index} | {levelPrice[index]} TRX</h5>
                             <p className="card-text">
@@ -330,7 +331,7 @@ export default class BackOffice extends Component {
                             <a href="#" className="btn btn-secondary">Buyed</a>
 
                         </div>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer text-white">
                             <div color="transparent" className="btn-xs float-left py-0" id="load-parthers-btn"><i className="fa fa-users"></i> {matrix[1].length + (matrix[3] * 3)}</div>
                             <div color="transparent" className="btn-xs float-right py-0" id="load-notifications-btn"><i className="fa fa-refresh"></i> {matrix[3]}</div>
                         </div>
@@ -339,17 +340,18 @@ export default class BackOffice extends Component {
                 );
 
             } else {
+                // funcion comprar nivel que yo quiera this.props.contrato.matrix.buyNewLevel(nivel, precio + "000000").send()
                 canasta[index - 1] = (
-                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index}>
+                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "18rem"}}>
                         <div className="card-body">
                             <h5 className="card-title">{index} | {levelPrice[index]} TRX</h5>
                             <p className="card-text">
                                     <span className={"badge-left badge " + estilo1}><i className="fa fa-users"></i></span><span className={"badge-center badge " + estilo2}><i className="fa fa-users"></i></span><span className={"badge-right badge  " + estilo3}><i className="fa fa-users"></i></span>
                             </p>
-                            <a href="#" onClick={() => { this.props.contrato.matrix.buyNewLevel(nivel, precio + "000000").send() }} className="btn btn-success">Buy Level</a>
+                            <a href="#" onClick={() => { this.deposit() }} className="btn btn-success">Buy Level</a>
 
                         </div>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer text-white">
                             <div color="transparent" className="btn-xs float-left py-0" id="load-parthers-btn"><i className="fa fa-users"></i> 0</div>
                             <div color="transparent" className="btn-xs float-right py-0" id="load-notifications-btn"><i className="fa fa-refresh"></i> 0</div>
                         </div>
@@ -388,7 +390,7 @@ export default class BackOffice extends Component {
                         <tr>
                             <td>
                                 <p style={{ fontSize: '18px' }}>Balance</p>
-                                <p style={{ fontSize: '18px' }}>Level</p>
+                                <p style={{ fontSize: '18px' }}>My Level</p>
                             </td>
                             <td style={{ textAlign: 'right' }}>
                                 <p style={{ fontSize: '18px' }}>{this.state.balanceUSDT} <strong>USDT</strong></p>
@@ -419,38 +421,15 @@ export default class BackOffice extends Component {
             <div className="row text-white">
                 <div className="col-xs-4">
                     <p className="fs-4">
-                        Earned: {this.state.ganado} USDT
-                    </p>
-                </div>
-                <div className="col-xs-4">
-                    <p className="fs-4">
-                    My invested:{this.state.invertido} USDT
-                    </p>
-                </div>
-                <div className="col-xs-4">
-                    <p className="fs-4">
-                    People: {this.state.personas | 0}
+                        Earned: {this.state.ganado} USDT |
+                        My invested: {this.state.invertido} USDT |
+                        People: {this.state.personas}
                     </p>
                 </div>
             </div>
             <hr style={{color:"white", height:"1px"}} />
             <div className="row">
                 {this.state.canastas}
-            </div>
-            <div className="row">
-                <div className="col-12 col-md-3">
-                    <div color="transparent" className="btn-xs float-left py-0" id="load-notifications-btn" style={{
-                        height: '45px',
-                        maxHeight: '45px'
-                    }}><i className="fa fa-refresh"></i> Recycle count</div>
-                </div>
-                <div className="col-12 col-md-3">
-                    <div color="transparent" className="btn-xs float-left py-0" id="load-notifications-btn" style={{
-                        height: '45px',
-                        maxHeight: '45px'
-                    }}><i className="fa fa-users"></i> Number partners in the
-                        slot {this.state.personas}</div>
-                </div>
             </div>
         </div>);
     }
