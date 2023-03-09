@@ -1,32 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TMC BackOffice TRON</title>
-<!-- Bootstrap -->
-<link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-<script src="https://use.fontawesome.com/75b3ae30c3.js"></script>
-</head>
-<body class="bg-dark" style="background: radial-gradient(farthest-side at 100% 0px, rgb(12, 12, 15) 100%, rgb(12, 12, 15)) 0% 0% / cover no-repeat fixed;">
-<nav class="navbar navbar-expand- navbar-dark bg-dark"> <a class="navbar-brand" href="#">BackOffice</a>
-  <div class=" " id="">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active"> <a class="nav-link" href="/">Home </a> </li>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 
-    </ul>
-  </div>
-</nav>
-<div id="root"></div>
-<footer class="text-center" style="height: 50px; max-height: 50px">
-  <p>Copyright © TMC. All rights reserved.</p>
-</footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="js/jquery-3.4.1.min.js"></script> 
-<!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="js/popper.min.js"></script> 
-<script src="js/bootstrap-4.4.1.js"></script>
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>TMC</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icon.svg" type="image/x-icon">
+    <link rel="icon" href="icon.svg" type="image/x-icon">
+
+</head>
+
+<body id="top" class="bg-dark ">
+
+  <header class="s-header">
+
+    <div class="header-logo">
+        <a class="site-logo" href="/">
+            <img src="images/TMC-blanco-verde.svg" height="100%" alt="Homepage">
+        </a>
+    </div>
+
+    <nav class="header-nav">
+
+        <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+        <div class="header-nav__content">
+            <h3>Navigation</h3>
+            
+            <ul class="header-nav__list">
+                <li><a class="smoothscroll"  href="/" title="about">Home</a></li>
+                <li><a class="smoothscroll"  href="/backoffice" title="about">BackOffice</a></li>
+                <li><a class="smoothscroll"  href="https://tronscan.io/#/contract/TDL7ZoYdhNa5DZzyHkggSQ4wv5PvJXdkCA/code" title="contact">Contract</a></li>
+            </ul>
+
+            <ul class="header-nav__social">
+                <li>
+                    <a href="#"><i class="fa fa-telegram"></i></a>
+                </li>
+            </ul>
+
+        </div> 
+    </nav>  
+    <a class="header-menu-toggle" href="#0">
+        <span class="header-menu-text">Menu</span>
+        <span class="header-menu-icon"></span>
+    </a>
+
+  </header> 
+
+  <div id="root"></div>
+
+  
+    <!-- footer
+    ================================================== -->
+    <footer>
+
+        <div class="row footer-bottom">
+
+            <div class="col-twelve">
+                <div class="copyright">
+                    <p>
+                        © TheMonopolyClub |
+                        <a href="https://tronscan.io/#/contract/TDL7ZoYdhNa5DZzyHkggSQ4wv5PvJXdkCA/code">TDL7ZoYdhNa5DZzyHkggSQ4wv5PvJXdkCA</a>
+                    </p>
+                </div>
+
+                <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div> 
+
+    </footer> 
+
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
+                    "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
+                    "Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
+                "Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div> 
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
+
 </html>

@@ -876,6 +876,8 @@ input[type="button"].btn--primary:focus {
     color: #39b54a;
 }
 
+
+
 .btn--stroke:hover, button.btn--stroke:hover {
     border: 0.2rem solid #000000;
     color: #000000;
@@ -1840,6 +1842,33 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     color: #000000;
 }
 
+
+.home-content__buttons2 {
+    padding-top: 6rem;
+    text-align: left;
+}
+
+.home-content__buttons2 .btn {
+    width: 215px;
+    border-color: #FFFFFF;
+    background: #FFFFFF !important;
+    color: #000000;
+    margin: 1.5rem 1.5rem 0 0;
+    letter-spacing: .25rem;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.home-content__buttons2 .btn:last-child {
+    margin-right: 0;
+}
+
+.home-content__buttons2 .btn:hover, 
+.home-content__buttons2 .btn:focus {
+    background: #9c9c9c !important;
+    color: #000000;
+}
+
 .home-content__scroll {
     position: absolute;
     right: 9.5rem;
@@ -2370,8 +2399,8 @@ html.no-csstransitions .home-content__main {
 .s-services {
     padding-top: 16.2rem;
     padding-bottom: 13.2rem;
-    background-color: #FFFFFF;
-    color: #757575;
+    background-color: #000000;
+    color: #ffffff;
     position: relative;
 }
 
@@ -2729,42 +2758,6 @@ html.no-csstransitions .home-content__main {
  * # clients
  *
  * ------------------------------------------------------------------- */
- summary {
-    font-size: 3rem;
-    font-weight: 600;
-   /* background-color: #fff;*/
-    color: #333;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    outline: none;
-    border-radius: 0.25rem;
-    text-align: left;
-    cursor: pointer;
-    position: relative;
-  }
-  details > summary::after {
-    position: absolute;
-    content: "+";
-    right: 20px;
-  }
-  details[open] > summary::after {
-    position: absolute;
-    content: "-";
-    right: 20px;
-  }
-  details > summary::-webkit-details-marker {
-    display: none;
-  }
-  
- 
-details[open] summary ~ * {
-    animation: sweep .5s ease-in-out;
-  }
-  @keyframes sweep {
-    0%    {opacity: 0; margin-top: -10px}
-    100%  {opacity: 1; margin-top: 0px}
-  }
-
 .s-clients {
     padding-top: 16.2rem;
     padding-bottom: 16.8rem;
@@ -3508,6 +3501,9 @@ footer .row {
 
 .footer-bottom .copyright span {
     display: inline-block;
+    color: #333333;
+    font-size: xx-large;
+    font-weight: 800;
 }
 
 .footer-bottom .copyright span::after {
