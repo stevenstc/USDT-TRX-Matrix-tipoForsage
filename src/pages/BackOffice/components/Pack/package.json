@@ -1,6 +1,0 @@
-{
-  "name": "Pack",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./Pack.js"
-}
