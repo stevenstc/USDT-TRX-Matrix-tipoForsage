@@ -322,13 +322,13 @@ export default class BackOffice extends Component {
                 }
 
                 canasta[index - 1] = (
-                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "18rem"}}>
+                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "25rem"}}>
                         <div className="card-body">
                             <h5 className="card-title">{index} | {levelPrice[index]} TRX</h5>
                             <p className="card-text">
                                 <span className={"badge-left badge " + estilo1}><i className="fa fa-users"></i></span><span className={"badge-center badge " + estilo2}><i className="fa fa-users"></i></span><span className={"badge-right badge  " + estilo3}><i className="fa fa-users"></i></span>
                             </p>
-                            <a href="#" className="btn btn-secondary">Buyed</a>
+                            <button className="btn btn-secondary">Buyed</button>
 
                         </div>
                         <div class="card-footer text-white">
@@ -342,16 +342,16 @@ export default class BackOffice extends Component {
             } else {
                 // funcion comprar nivel que yo quiera this.props.contrato.matrix.buyNewLevel(nivel, precio + "000000").send()
                 canasta[index - 1] = (
-                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "18rem"}}>
+                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "25rem"}}>
                         <div className="card-body">
                             <h5 className="card-title">{index} | {levelPrice[index]} TRX</h5>
                             <p className="card-text">
                                     <span className={"badge-left badge " + estilo1}><i className="fa fa-users"></i></span><span className={"badge-center badge " + estilo2}><i className="fa fa-users"></i></span><span className={"badge-right badge  " + estilo3}><i className="fa fa-users"></i></span>
                             </p>
-                            <a href="#" onClick={() => { this.deposit() }} className="btn btn-success">Buy Level</a>
+                            <button onClick={() => { this.deposit() }} className="btn btn-success">Buy Level</button>
 
                         </div>
-                        <div class="card-footer text-white">
+                        <div className="card-footer text-white">
                             <div color="transparent" className="btn-xs float-left py-0" id="load-parthers-btn"><i className="fa fa-users"></i> 0</div>
                             <div color="transparent" className="btn-xs float-right py-0" id="load-notifications-btn"><i className="fa fa-refresh"></i> 0</div>
                         </div>
