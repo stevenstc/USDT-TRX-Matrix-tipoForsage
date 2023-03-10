@@ -324,7 +324,7 @@ export default class BackOffice extends Component {
                 canasta[index - 1] = (
                     <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "25rem"}}>
                         <div className="card-body">
-                            <h5 className="card-title">{index} | {levelPrice[index]} TRX</h5>
+                            <h5 className="card-title">{index} | {levelPrice[index]} USDT</h5>
                             <p className="card-text">
                                 <span className={"badge-left badge " + estilo1}><i className="fa fa-users"></i></span><span className={"badge-center badge " + estilo2}><i className="fa fa-users"></i></span><span className={"badge-right badge  " + estilo3}><i className="fa fa-users"></i></span>
                             </p>
@@ -344,7 +344,7 @@ export default class BackOffice extends Component {
                 canasta[index - 1] = (
                     <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "25rem"}}>
                         <div className="card-body">
-                            <h5 className="card-title">{index} | {levelPrice[index]} TRX</h5>
+                            <h5 className="card-title">{index} | {levelPrice[index]} USDT</h5>
                             <p className="card-text">
                                     <span className={"badge-left badge " + estilo1}><i className="fa fa-users"></i></span><span className={"badge-center badge " + estilo2}><i className="fa fa-users"></i></span><span className={"badge-right badge  " + estilo3}><i className="fa fa-users"></i></span>
                             </p>
