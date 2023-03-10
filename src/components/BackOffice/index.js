@@ -17,7 +17,7 @@ export default class BackOffice extends Component {
             aprovedUSDT: 0,
             contractUSDT: {},
             direccion: "",
-            link: "Haz una inversión para obtener el LINK de referido",
+            link: "Make an investment to get the referral LINK",
             registered: false,
             balanceRef: 0,
             totalRef: 0,
@@ -391,10 +391,14 @@ export default class BackOffice extends Component {
                             <td>
                                 <p style={{ fontSize: '18px' }}>Balance</p>
                                 <p style={{ fontSize: '18px' }}>My Level</p>
+                                <p style={{ fontSize: '18px' }}>Referal Link</p>
+
                             </td>
                             <td style={{ textAlign: 'right' }}>
                                 <p style={{ fontSize: '18px' }}>{this.state.balanceUSDT} <strong>USDT</strong></p>
                                 <p style={{ fontSize: '18px' }}>{this.state.level}</p>
+                                <p style={{ fontSize: '18px' }}>{this.state.link}</p>
+
                             </td>
                         </tr>
                     </tbody>
