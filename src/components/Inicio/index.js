@@ -46,14 +46,14 @@ export default class Inicio extends Component {
 
     <section id='about' className="container s-about">
 
-        <div className="row section-header has-bottom-sep" data-aos="fade-up">
+        <div className="row section-header has-bottom-sep" >
             <div className="col-full">
                 <h3 className="subhead subhead--dark">Business transactions</h3>
                 <h1 className="display-1 display-1--light">CrowdFunding Global Decentralized Plataform</h1>
             </div>
         </div>
 
-        <div className="row about-desc" data-aos="fade-up">
+        <div className="row about-desc" >
             <div className="col-full">
               <h1>
                     Crowdfunding Global Decentralized Platform Based On Smart Contract’s Technology Connects People To Directly Engage In Personal And Business Transactions.
@@ -67,7 +67,7 @@ export default class Inicio extends Component {
 
     <section id='services' className="container s-services bg-black">
 
-        <div className="row section-header has-bottom-sep" data-aos="fade-up">
+        <div className="row section-header has-bottom-sep" >
             <div className="col-full">
                 <h3 className="subhead">Now</h3>
                 <h1 className="display-2" style={{color: "#FFFFFF"}}>The Next Generation Defi Ecosystem</h1>
@@ -76,7 +76,7 @@ export default class Inicio extends Component {
 
         <div className="row services-list block-1-2 block-tab-full">
 
-            <div className="col-block service-item" data-aos="fade-up">
+            <div className="col-block service-item" >
                 <div className="service-icon">
                     <i className="icon-paint-brush"></i>
                 </div>
@@ -87,7 +87,7 @@ export default class Inicio extends Component {
                 </div>
             </div>
 
-            <div className="col-block service-item" data-aos="fade-up">
+            <div className="col-block service-item" >
                 <div className="service-icon">
                     <i className="icon-group"></i>
                 </div>
@@ -98,7 +98,7 @@ export default class Inicio extends Component {
                 </div>
             </div>
 
-            <div className="col-block service-item" data-aos="fade-up">
+            <div className="col-block service-item" >
                 <div className="service-icon">
                     <i className="icon-megaphone"></i>
                 </div>  
@@ -109,7 +109,7 @@ export default class Inicio extends Component {
                 </div>
             </div>
 
-            <div className="col-block service-item" data-aos="fade-up">
+            <div className="col-block service-item" >
                 <div className="service-icon">
                     <i className="icon-earth"></i>
                 </div>
@@ -127,14 +127,14 @@ export default class Inicio extends Component {
 
     <section id="clients" className="container s-clients">
 
-        <div className="row section-header" data-aos="fade-up">
+        <div className="row section-header" >
             <div className="col-full">
                 <h3 className="subhead">FAQ</h3>
                 <h1 className="display-2">FREQUENTLY ASKED QUESTIONS</h1>
             </div>
         </div> 
 
-        <div className="row clients-testimonials" data-aos="fade-up">
+        <div className="row clients-testimonials" >
             <div className="col-full">
                 <div className="testimonials__slide">
                   <details close="true">
