@@ -230,10 +230,8 @@ export default class BackOffice extends Component {
                 loc = loc.split("?")[0];
             }
 
-            mydireccion = loc + "?ref=" + parseInt(user.id._hex);
-            this.setState({
-                link: mydireccion,
-            });
+            link = loc + "?ref=" + parseInt(user.id._hex);
+            
         } 
 
         this.setState({
