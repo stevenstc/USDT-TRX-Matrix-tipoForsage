@@ -75,7 +75,7 @@ html, body {
 
 body {
     background: #111111;
-    font-family: "lora-regular", serif;
+    font-family: "montserrat-medium", sans-serif;
     font-size: 1.7rem;
     font-style: normal;
     font-weight: normal;
@@ -208,11 +208,11 @@ em, i, strong, b {
 }
 
 em, i {
-    font-family: "lora-italic", serif;
+    font-family: "montserrat-medium", sans-serif;
 }
 
 strong, b {
-    font-family: "lora-bold", serif;
+    font-family: "montserrat-medium", sans-serif;
 }
 
 small {
@@ -232,7 +232,7 @@ blockquote:before {
     line-height: 0px;
     margin: 0;
     color: rgba(0, 0, 0, 0.25);
-    font-family: arial, sans-serif;
+    font-family: "montserrat-medium", sans-serif;
     position: absolute;
     top: 3.6rem;
     left: 0;
@@ -264,7 +264,7 @@ blockquote cite a, blockquote cite a:visited {
 }
 
 abbr {
-    font-family: "lora-bold", serif;
+    font-family: "montserrat-medium", sans-serif;
     font-variant: small-caps;
     text-transform: lowercase;
     letter-spacing: .05rem;
@@ -272,7 +272,7 @@ abbr {
 }
 
 var, kbd, samp, code, pre {
-    font-family: Consolas, "Andale Mono", Courier, "Courier New", monospace;
+    font-family: "montserrat-medium", sans-serif;
 }
 
 pre {
@@ -425,7 +425,7 @@ table {
     border-width: 0;
     width: 100%;
     max-width: 100%;
-    font-family: "lora-regular", serif;
+    font-family: "montserrat-medium", sans-serif;
 }
 
 th, td {
@@ -787,15 +787,13 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-    display: inline-block;
+    /*display: inline-block;*/
     font-family: "montserrat-medium", sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: .3rem;
-    height: 5.4rem;
     line-height: calc(5.4rem - .4rem);
-    padding: 0 3rem;
-    margin: 0 .3rem 1.2rem 0;
+
     color: #000000;
     text-decoration: none;
     text-align: center;
@@ -1037,7 +1035,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     height: 1em;
     position: absolute;
     font-size: 10rem;
-    font-family: Arial, Sans-Serif;
+    font-family: "montserrat-medium", sans-serif;
     color: rgba(0, 0, 0, 0.25);
 }
 
@@ -1844,7 +1842,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 
 .home-content__buttons2 {
-    padding-top: 6rem;
+    padding-top: 2rem !important;
     text-align: left;
 }
 
@@ -1860,7 +1858,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .home-content__buttons2 .btn:last-child {
-    margin-right: 0;
+    margin-right: 10;
 }
 
 .home-content__buttons2 .btn:hover, 
@@ -2589,7 +2587,7 @@ html.no-csstransitions .home-content__main {
 
 .item-folio__thumb a::after {
     content: "+";
-    font-family: georgia, serif;
+    font-family: "montserrat-medium", sans-serif;
     font-size: 2.7rem;
     display: block;
     height: 30px;
@@ -2820,7 +2818,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .clients-testimonials .testimonials p {
-    font-family: "lora-regular", serif;
+    font-family: "montserrat-medium", sans-serif;
     font-size: 3rem;
     line-height: 1.8;
     color: #555555;

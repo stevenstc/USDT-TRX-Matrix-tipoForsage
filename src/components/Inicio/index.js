@@ -22,12 +22,12 @@ export default class Inicio extends Component {
                     #1 BlockChain decentralized USDT ecosystem
                 </h1>
 
-                <div className="home-content__buttons2 pl-4">
+                <div className="home-content__buttons2 py-4">
                     <a href="/?backoffice" className="btn btn-Light">
                         Start Now
                     </a>
 
-                  </div>
+                </div>
 
             </div>
 

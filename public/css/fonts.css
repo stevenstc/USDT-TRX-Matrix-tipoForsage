@@ -3,39 +3,6 @@
  *
  * ------------------------------------------------------------------- */
 
-
-/*
- * lora
-================================================================================ */
-@font-face {
-    font-family: "lora-regular";
-    src: url("../fonts/lora/lora-regular-webfont.woff2") format("woff2"), url("../fonts/lora/lora-regular-webfont.woff") format("woff");
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "lora-italic";
-    src: url("../fonts/lora/lora-italic-webfont.woff2") format("woff2"), url("../fonts/lora/lora-italic-webfont.woff") format("woff");
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "lora-bold";
-    src: url("../fonts/lora/lora-bold-webfont.woff2") format("woff2"), url("../fonts/lora/lora-bold-webfont.woff") format("woff");
-    font-style: normal;
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "lora-bold-italic";
-    src: url("../fonts/lora/lora-bolditalic-webfont.woff2") format("woff2"), url("../fonts/lora/lora-bolditalic-webfont.woff") format("woff");
-    font-style: normal;
-    font-weight: normal;
-}
-
-
 /*
  * montserrat
 ================================================================================ */

@@ -16,7 +16,7 @@ export default class BackOffice extends Component {
             balanceUSDT: "Loading...",
             aprovedUSDT: 0,
             contractUSDT: {},
-            direccion: "",
+            direccion: "...",
             link: "Make an investment to get the referral LINK",
             registered: false,
             balanceRef: 0,
@@ -25,7 +25,8 @@ export default class BackOffice extends Component {
             ganado: 0,
             my: 0,
             withdrawn: 0,
-            personas: 0
+            personas: 0,
+            id: "..."
 
         };
 
@@ -213,8 +214,13 @@ export default class BackOffice extends Component {
 
     async Link() {
         let mydireccion = await window.tronWeb.trx.getAccount();
-        //console.log(mydireccion);
         mydireccion = window.tronWeb.address.fromHex(mydireccion.address);
+
+        this.setState({
+            direccion: mydireccion
+        })
+
+        var link = "Make an investment to get the referral LINK"
 
         var user = await this.props.contrato.matrix.users(mydireccion).call();
 
@@ -228,11 +234,13 @@ export default class BackOffice extends Component {
             this.setState({
                 link: mydireccion,
             });
-        } else {
-            this.setState({
-                link: "Haz una inversión para obtener el LINK de referido",
-            });
-        }
+        } 
+
+        this.setState({
+            link: link,
+            id: parseInt(user.id._hex)
+        });
+
     }
 
     async Investors() {
@@ -322,7 +330,7 @@ export default class BackOffice extends Component {
                 }
 
                 canasta[index - 1] = (
-                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "25rem"}}>
+                    <div className="card text-center text-white bg-secondary m-3" key={"level" + index} style={{width: "25rem"}}>
                         <div className="card-body">
                             <h5 className="card-title">{index} | {levelPrice[index]} USDT</h5>
                             <p className="card-text">
@@ -342,7 +350,7 @@ export default class BackOffice extends Component {
             } else {
                 // funcion comprar nivel que yo quiera this.props.contrato.matrix.buyNewLevel(nivel, precio + "000000").send()
                 canasta[index - 1] = (
-                    <div className="card text-center text-white bg-secondary mb-3" key={"level" + index} style={{width: "25rem"}}>
+                    <div className="card text-center text-white bg-secondary m-3" key={"level" + index} style={{width: "25rem"}}>
                         <div className="card-body">
                             <h5 className="card-title">{index} | {levelPrice[index]} USDT</h5>
                             <p className="card-text">
@@ -379,6 +387,16 @@ export default class BackOffice extends Component {
         console.log(cosa);
     }
 
+    getlink() {
+        var aux = document.createElement("input");
+        aux.setAttribute("value",this.state.link);
+        document.body.appendChild(aux);
+        aux.select();
+        document.execCommand("copy");
+        alert("link copyed!");
+        document.body.removeChild(aux);
+    }
+
 
     render() {
 
@@ -390,14 +408,16 @@ export default class BackOffice extends Component {
                         <tr>
                             <td>
                                 <p style={{ fontSize: '18px' }}>Balance</p>
-                                <p style={{ fontSize: '18px' }}>My Level</p>
-                                <p style={{ fontSize: '18px' }}>Referal Link</p>
+                                <p style={{ fontSize: '18px' }}>Level</p>
+                                <p style={{ fontSize: '18px' }}>Link</p>
+                                <p style={{ fontSize: '18px' }}>ID: {this.state.id}</p>
 
                             </td>
                             <td style={{ textAlign: 'right' }}>
                                 <p style={{ fontSize: '18px' }}>{this.state.balanceUSDT} <strong>USDT</strong></p>
                                 <p style={{ fontSize: '18px' }}>{this.state.level}</p>
-                                <p style={{ fontSize: '18px' }}>{this.state.link}</p>
+                                <p style={{ fontSize: '18px', cursor:"pointer", borderStyle:"solid", padding: "1rem" }} onClick={()=>{this.getlink()}}>{this.state.link}
+                                </p>
 
                             </td>
                         </tr>
@@ -409,13 +429,19 @@ export default class BackOffice extends Component {
                     <tbody>
                         <tr>
                             <td>
+                                <p className="text-center" style={{ fontSize: '10px'}}>{this.state.direccion}
+                                    </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <p style={{ fontSize: '16px' }}><button onClick={() => this.deposit()} type="submit" className="btn btn-success btn-sm text-white" style={{ width: '100%' }}>{this.state.texto}</button></p>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <p style={{ fontSize: '16px' }}>Price {this.state.levelPrice} USDT</p>
-                                <p style={{ fontSize: '16px' }}>You must have ~ 50 TRX to make the transaction</p>
+                                <p style={{ fontSize: '16px' }}>You must have ~ 100 TRX to make the transaction</p>
                             </td>
                         </tr>
                     </tbody>
