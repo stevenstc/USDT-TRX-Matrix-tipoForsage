@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.conectar();
+    this.conectar();
 
     setInterval(async() => {
       await this.conectar();
@@ -57,7 +57,6 @@ class App extends Component {
         window.tronWeb.trx.getAccount()
         .then((account)=>{
           tronWeb['loggedIn'] = true;
-          tronWeb['address'] = window.tronWeb.address.fromHex(account.address);
 
           this.setState({
             accountAddress: window.tronWeb.address.fromHex(account.address),

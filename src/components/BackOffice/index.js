@@ -407,20 +407,21 @@ export default class BackOffice extends Component {
                             <td>
                                 <p style={{ fontSize: '18px' }}>Balance</p>
                                 <p style={{ fontSize: '18px' }}>Level</p>
-                                <p style={{ fontSize: '18px' }}>Link</p>
-                                <p style={{ fontSize: '18px' }}>ID: {this.state.id}</p>
+                                <p style={{ fontSize: '18px' }}>ID:</p>
 
                             </td>
                             <td style={{ textAlign: 'right' }}>
                                 <p style={{ fontSize: '18px' }}>{this.state.balanceUSDT} <strong>USDT</strong></p>
                                 <p style={{ fontSize: '18px' }}>{this.state.level}</p>
-                                <p style={{ fontSize: '18px', cursor:"pointer", borderStyle:"solid", padding: "1rem" }} onClick={()=>{this.getlink()}}>{this.state.link}
-                                </p>
+                                <p style={{ fontSize: '18px' }}>{this.state.id}</p>
+                                
 
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <p style={{ fontSize: '18px', cursor:"pointer", borderStyle:"solid", padding: "1rem" }} onClick={()=>{this.getlink()}}>{this.state.link}
+                                </p>
             </div>
             <div className="row text-white">
                 <table className="table text-white">
