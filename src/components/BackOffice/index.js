@@ -440,7 +440,7 @@ export default class BackOffice extends Component {
                         <tr>
                             <td>
                                 <p style={{ fontSize: '16px' }}>Price {this.state.levelPrice} USDT</p>
-                                <p style={{ fontSize: '16px' }}>You must have ~ 100 TRX or energy to make the transaction</p>
+                                <p style={{ fontSize: '16px' }}>You must have ~ 110 TRX or energy to make the transaction</p>
                             </td>
                         </tr>
                     </tbody>
