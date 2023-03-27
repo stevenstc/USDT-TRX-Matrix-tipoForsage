@@ -35,6 +35,7 @@ export default class BackOffice extends Component {
         this.Investors = this.Investors.bind(this);
         this.Link = this.Link.bind(this);
         this.withdraw = this.withdraw.bind(this);
+        this.ruta = this.ruta.bind(this);
 
 
     }
@@ -48,6 +49,25 @@ export default class BackOffice extends Component {
         }, 3 * 1000);
 
     };
+
+    async ruta(loc,direccionSP){
+        if (loc.indexOf('&') > 0) {
+            var getString = loc.split('?')[1].split('&')[1];
+
+            if (parseInt(getString) >= 0) {
+
+                var inversor = await this.props.contrato.matrix.idToAddress(getString).call();
+
+                if (await this.props.contrato.matrix.isUserExists(inversor).call()) {
+
+                    direccionSP = window.tronWeb.address.fromHex(inversor);
+
+                }
+            }
+        }
+
+        return direccionSP;
+    }
 
     async estado() {
 
@@ -100,13 +120,28 @@ export default class BackOffice extends Component {
             text = "Link Wallet"
         }
 
+        var owner = window.tronWeb.address.fromHex(await this.props.contrato.matrix.owner().call());
+        var user = await this.props.contrato.matrix.users(accountAddress).call()
+
+        if(user.referrer === "410000000000000000000000000000000000000000"){
+            var direccionSP = await this.ruta(document.location.href,owner);
+        }else{
+            direccionSP = window.tronWeb.address.fromHex(user.referrer);
+        }
+
+        var idsponsor = await this.props.contrato.matrix.users(direccionSP).call();
+
+        direccionSP = parseInt(idsponsor.id._hex)+":"+direccionSP
+
         this.setState({
             level: activeLevels,
             levelPrice: parseInt(levelPrice._hex) / 10 ** 6,
             balanceUSDT: balanceUSDT,
             texto: text,
             aprovedUSDT: aproved,
-            contractUSDT: contractUSDT
+            contractUSDT: contractUSDT,
+            sponsor: direccionSP
+
         });
 
         //console.log(min);
@@ -141,30 +176,9 @@ export default class BackOffice extends Component {
         if (balanceInTRX >= 50 && aproved >= amount && balanceUSDT >= amount && level < LAST_LEVEL) {
 
             var loc = document.location.href;
-            if (loc.indexOf('?') > 0) {
-                var getString = loc.split('?')[1];
-                var GET = getString.split('&');
-                var get = {};
-                for (var i = 0, l = GET.length; i < l; i++) {
-                    var tmp = GET[i].split('=');
-                    get[tmp[0]] = unescape(decodeURI(tmp[1]));
-                }
-
-                if (get['ref']) {
-                    tmp = get['ref'].split('#');
-
-                    var inversor = await this.props.contrato.matrix.idToAddress(tmp[0]).call();
-
-                    if (await this.props.contrato.matrix.isUserExists(inversor).call()) {
-
-                        direccionSP = window.tronWeb.address.fromHex(inversor);
-
-                    }
-                }
-            }
-
+            
             this.setState({
-                sponsor: direccionSP
+                sponsor: await this.ruta(loc,direccionSP)
             });
 
 
@@ -224,13 +238,13 @@ export default class BackOffice extends Component {
 
         var user = await this.props.contrato.matrix.users(mydireccion).call();
 
-        if (await this.props.contrato.matrix.isUserExists(mydireccion).call()) {
+        if (await this.props.contrato.matrix.isUserExists(mydireccion).call() || true) {
             let loc = document.location.href;
             if (loc.indexOf("?") > 0) {
                 loc = loc.split("?")[0];
             }
 
-            link = loc + "?ref=" + parseInt(user.id._hex);
+            link = loc + "?backoffice?ref=" + parseInt(user.id._hex);
             
         } 
 
@@ -435,6 +449,7 @@ export default class BackOffice extends Component {
                         <tr>
                             <td>
                                 <p style={{ fontSize: '16px' }}><button onClick={() => this.deposit()} type="submit" className="btn btn-success btn-sm text-white" style={{ width: '100%' }}>{this.state.texto}</button></p>
+                                <p> Partner: {this.state.sponsor}</p>
                             </td>
                         </tr>
                         <tr>
