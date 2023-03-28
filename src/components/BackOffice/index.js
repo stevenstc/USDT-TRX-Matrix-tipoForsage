@@ -65,7 +65,7 @@ export default class BackOffice extends Component {
                 getString = loc.split('=')[1].split('&')[0]
             }
 
-            if (parseInt(getString) >= 0) {
+            if (parseInt(getString) >= 1) {
 
                 var inversor = await this.props.contrato.matrix.idToAddress(getString).call();
 
