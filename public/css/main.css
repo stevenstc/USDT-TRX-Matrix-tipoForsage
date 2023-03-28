@@ -461,6 +461,7 @@ th:last-child, td:last-child {
  * ## Spacing 
  * ------------------------------------------------------------------- */
 button, .btn {
+    font-size:1.3rem !important;
     margin-bottom: 1.2rem;
 }
 
@@ -822,6 +823,13 @@ input[type="button"]:focus {
     outline: 0;
 }
 
+.btn.btn--secondary {
+    font-size: larger;
+    background: #000000;
+    border-color: #300000;
+    color: #eaeaea;
+}
+
 
 /* button primary
  * ------------------------------------------------- */
@@ -831,6 +839,7 @@ button.btn--primary,
 input[type="submit"].btn--primary,
 input[type="reset"].btn--primary,
 input[type="button"].btn--primary {
+    font-size: larger;
     background: #39b54a;
     border-color: #39b54a;
     color: #FFFFFF;

@@ -55,25 +55,23 @@ export default class BackOffice extends Component {
 
     async ruta(loc, direccionSP) {
 
-        if ((loc.indexOf('?') > 0 || loc.indexOf('=') > 0) && loc.indexOf('ref') > 0) {
-            var getString = loc.split('?')[1];
-            if (loc.indexOf('&') > 0) {
-                getString = loc.split('&')[1].split('=')[1]
-            }
+        if ( loc.indexOf('ref=') > 0) {
+            var getString = loc.split('ref=')[1];
 
-            if (loc.indexOf('=') > 0) {
-                getString = loc.split('=')[1].split('&')[0]
+            if(loc.indexOf('&') > 0){
+                getString = getString.split('&')[0]
+
             }
 
             if (parseInt(getString) >= 1) {
-
                 var inversor = await this.props.contrato.matrix.idToAddress(getString).call();
-
                 if (await this.props.contrato.matrix.isUserExists(inversor).call()) {
-
                     direccionSP = window.tronWeb.address.fromHex(inversor);
-
                 }
+            }
+
+            if(window.tronWeb.isAddress(getString)){
+                direccionSP = getString
             }
         }
 
@@ -191,7 +189,7 @@ export default class BackOffice extends Component {
                 loc = loc.split("?")[0];
             }
 
-            link = loc + "?backoffice&ref=" + parseInt(user.id._hex);
+            link = loc + "?ref=" + parseInt(user.id._hex);
 
         }
 
@@ -203,7 +201,8 @@ export default class BackOffice extends Component {
     }
 
     async Investors() {
-        var direccion = window.tronWeb.address.fromHex((await window.tronWeb.trx.getAccount()).address);
+
+        var direccion = this.state.accountAddress;
 
         var LAST_LEVEL = 15;
 
@@ -295,9 +294,8 @@ export default class BackOffice extends Component {
                             <button className="btn btn-secondary">Buyed</button>
 
                         </div>
-                        <div class="card-footer text-white">
-                            <div color="transparent" className="btn-xs float-left py-0" id="load-parthers-btn"><i className="fa fa-users"></i> {matrix[1].length + (matrix[3] * 3)}</div>
-                            <div color="transparent" className="btn-xs float-right py-0" id="load-notifications-btn"><i className="fa fa-refresh"></i> {matrix[3]}</div>
+                        <div className="card-footer text-white">
+                            <i className="fa fa-users"></i> {matrix[1].length + (matrix[3] * 3)} {" | "}<i className="fa fa-refresh"></i> {matrix[3]}
                         </div>
                     </div>
 
@@ -316,11 +314,8 @@ export default class BackOffice extends Component {
 
                         </div>
                         <div className="card-footer text-white">
-                            <div className="row">
-                                <div color="transparent" className="col-6 btn-xs float-left py-0" id="load-parthers-btn"><i className="fa fa-users"></i> 0</div>
-                                <div color="transparent" className="col-6 btn-xs float-right py-0" id="load-notifications-btn"><i className="fa fa-refresh"></i> 0</div>
+                                <i className="fa fa-users"></i> 0 {" | "}<i className="fa fa-refresh"></i> 0
                         
-                            </div>
                         </div>
                     </div>
 
