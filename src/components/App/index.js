@@ -46,52 +46,23 @@ class App extends Component {
       tronWeb['web3'] = window.tronLink.tronWeb;
 
       this.setState({
-
         tronWeb: tronWeb,
       });
 
-      window.tronLink.request({method: 'tron_requestAccounts'})
-      .then(()=>{
+      if((await window.tronLink.request({method: 'tron_requestAccounts'})).code === 200){
 
-      
-        window.tronWeb.trx.getAccount()
-        .then((account)=>{
-          tronWeb['loggedIn'] = true;
-
-          this.setState({
-            accountAddress: window.tronWeb.address.fromHex(account.address),
-            tronWeb: tronWeb,
-        
-          });
-
-        }).catch(()=>{
-          tronWeb['loggedIn'] = false;
-          this.setState({
-
-            tronWeb: tronWeb
-        
-          });
+        this.setState({
+          accountAddress: window.tronLink.tronWeb.defaultAddress.base58,
 
         })
-        
-          
-      }).catch(()=>{
-
-          tronWeb['installed'] = false;
-          tronWeb['loggedIn'] = false;
-
-          this.setState({
-
-            tronWeb: tronWeb
-        
-          });
-
-      })
+      }
 
       if(window.tronLink.ready){
+        tronWeb['loggedIn'] = true;
+
         this.setState({
+          tronWeb: tronWeb,
           contrato: { 
-            ready: true,
             matrix: await window.tronWeb.contract().at(cons.SC),
             USDT: await window.tronWeb.contract().at(cons.USDT)
           }
@@ -110,11 +81,26 @@ class App extends Component {
     if(loc.indexOf('?')>0){
               
       getString = loc.split('?')[1];
+      getString = getString.split('?')[0];
+      getString = getString.split('&')[0];
+      getString = getString.split('=')[0];
       getString = getString.split('#')[0];
 
     }
 
+    var consulta = loc;
+
+    if(loc.indexOf('id=')>0){
+      consulta = loc.split('id=')[1];
+      consulta = consulta.split('?')[0];
+      consulta = consulta.split('&')[0];
+      consulta = consulta.split('=')[0];
+      consulta = consulta.split('#')[0];
+
+    }
+
     switch (getString) {
+      case "ref":
       case "bo": 
       case "BO":
       case "backoffice": 
@@ -132,9 +118,24 @@ class App extends Component {
     
         return (
           <>
-            <BackOffice contrato={this.state.contrato}/>
+            <BackOffice contrato={this.state.contrato} accountAddress={this.state.accountAddress} viewer={false}/>
           </>
         );
+
+        case "id":
+          case "preview":
+          case "viewer": 
+            if (!this.state.tronWeb.installed || !this.state.tronWeb.loggedIn) return (
+              <>
+                <TronLinkGuide installed={this.state.tronWeb.installed} loggedIn={this.state.tronWeb.loggedIn} url={"/?"+getString}/>
+              </>
+              );
+        
+            return (
+              <>
+                <BackOffice contrato={this.state.contrato} accountAddress={consulta} viewer/>
+              </>
+            );
       
 
       default:  

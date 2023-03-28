@@ -65,7 +65,7 @@ html {
 
 @media only screen and (max-width: 400px) {
     html {
-        font-size: 9.411764705882353px;
+        font-size: 9.5px;
     }
 }
 
@@ -616,17 +616,18 @@ input[type="url"],
 input[type="password"],
 textarea,
 select {
+    text-align: center;
     display: block;
     height: 6rem;
     padding: 1.5rem 0;
     border: 0;
     outline: none;
-    color: #333333;
+    color: #1a1a1a;
     font-family: "montserrat-light", sans-serif;
     font-size: 1.4rem;
     line-height: 3rem;
     max-width: 100%;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.861);
     border-bottom: 2px solid rgba(0, 0, 0, 0.15);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -789,9 +790,9 @@ input[type="reset"],
 input[type="button"] {
     /*display: inline-block;*/
     font-family: "montserrat-medium", sans-serif;
-    font-size: 1.2rem;
+    font-size: 4rem;
     text-transform: uppercase;
-    letter-spacing: .3rem;
+    letter-spacing: .2rem;
     line-height: calc(5.4rem - .4rem);
 
     color: #000000;
