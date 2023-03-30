@@ -225,20 +225,10 @@ export default class BackOffice extends Component {
         var ganado = 0;
 
         var levelPrice = [];
-        var ownerPrice = [];
         levelPrice[1] = 20;
-        ownerPrice[1] = 0;
-        ownerPrice[4] = 4;
 
         for (let i = 2; i <= LAST_LEVEL; i++) {
             levelPrice[i] = levelPrice[i - 1] * 2;
-            if (i >= 5) {
-                ownerPrice[i] = ownerPrice[i - 1] * 2;
-            } else {
-                if (i !== 4) {
-                    ownerPrice[i] = 0;
-                }
-            }
         }
 
         var directos = 0;
@@ -255,7 +245,7 @@ export default class BackOffice extends Component {
 
                 personas += matrix[1].length + matrix[3] * 3;
 
-                ganado += (matrix[1].length + matrix[3] * 3) * ownerPrice[index];
+                ganado += (matrix[1].length + matrix[3] * 3) * levelPrice[index];
 
                 var rango = matrix[1].length + ((matrix[3] * 3) % 3);
                 var estilo1, estilo2, estilo3;
