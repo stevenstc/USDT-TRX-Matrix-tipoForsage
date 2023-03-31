@@ -329,7 +329,9 @@ export default class BackOffice extends Component {
 
     async deposit() {
 
-        if(this.props.viewer){alert("viewer mode"); return;}
+        if(this.props.viewer){
+            //alert("viewer mode"); 
+            return;}
 
         const { level, levelPrice, balanceUSDT, aprovedUSDT, contractUSDT } = this.state;
 
@@ -353,7 +355,7 @@ export default class BackOffice extends Component {
 
         var LAST_LEVEL = await this.props.contrato.matrix.LAST_LEVEL().call();
 
-        if (balanceInTRX >= 50 && aproved >= amount && balanceUSDT >= amount && level < LAST_LEVEL) {
+        if ( aproved >= amount && balanceUSDT >= amount && level < LAST_LEVEL) {
 
             var loc = document.location.href;
 
@@ -371,47 +373,27 @@ export default class BackOffice extends Component {
 
             }
 
-
-
-
         } else {
 
-            var min = 100;
-
-            if (amount > 20 && balanceInTRX > min + 20) {
-
-                if (amount > balanceInTRX) {
-                    if (balanceInTRX <= min + 20) {
-                        window.alert("You do not have enough funds in your account you place at least " + min + " TRX");
-                    } else {
-                        document.getElementById("amount").value = balanceInTRX - 20;
-                        window.alert("You must leave " + min + " TRX free in your account to make the transaction");
-                    }
-
-
-
-                } else {
-
-                    document.getElementById("amount").value = amount - 20;
-                    window.alert("You must leave " + min + " TRX free in your account to make the transaction");
-
-                }
-            } else {
-                window.alert("You do not have enough funds in your account you place at least " + min + 20 + " TRX");
-            }
+            //alert("Insufficient funds or wallet not linked or error level");
+                 
         }
 
     };
 
     async withdraw() {
-        if(this.props.viewer){alert("viewer mode"); return;}
+        if(this.props.viewer){
+            //alert("viewer mode"); 
+            return;}
 
         var cosa = await this.props.contrato.matrix.withdraw().send();
         console.log(cosa);
     }
 
     getlink() {
-        if(this.props.viewer){alert("viewer mode"); return;}
+        if(this.props.viewer){
+            //alert("viewer mode");
+             return;}
 
         var aux = document.createElement("input");
         aux.setAttribute("value", this.state.link);
