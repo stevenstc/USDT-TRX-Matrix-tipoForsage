@@ -18,9 +18,11 @@ class App extends Component {
         installed: false,
         loggedIn: false,
         web3: null,
-        contrato: { 
-          ready: false
-        }
+        
+      },
+      contrato: { 
+        matrix: null,
+        USDT: null
       }
     };
 
@@ -38,9 +40,9 @@ class App extends Component {
 
   async conectar(){
 
-    if ( typeof window.tronLink !== 'undefined' && typeof window.tronWeb !== 'undefined' && document.location.href.indexOf('?')>0 ) { 
+    var {tronWeb, contrato} = this.state;
 
-      var tronWeb = this.state.tronWeb;
+    if ( typeof window.tronLink !== 'undefined' && typeof window.tronWeb !== 'undefined' && document.location.href.indexOf('?')>0 ) { 
 
       tronWeb['installed'] = true;
       tronWeb['web3'] = window.tronLink.tronWeb;
@@ -60,12 +62,23 @@ class App extends Component {
       if(window.tronLink.ready){
         tronWeb['loggedIn'] = true;
 
+        if(this.state.contrato.matrix == null){
+
+          contrato = {};
+
+          //window.tronWeb.setHeader({"TRON-PRO-API-KEY": 'b0e8c09f-a9c8-4b77-8363-3cde81365fac'})
+
+          contrato.matrix = await window.tronWeb.contract().at(cons.SC);
+          contrato.USDT = await window.tronWeb.contract().at(cons.USDT);
+
+          this.setState({
+            contrato: contrato,
+          });
+
+        }
+
         this.setState({
           tronWeb: tronWeb,
-          contrato: { 
-            matrix: await window.tronWeb.contract().at(cons.SC),
-            USDT: await window.tronWeb.contract().at(cons.USDT)
-          }
         });
       }
 
@@ -123,19 +136,19 @@ class App extends Component {
         );
 
         case "id":
-          case "preview":
-          case "viewer": 
-            if (!this.state.tronWeb.installed || !this.state.tronWeb.loggedIn) return (
-              <>
-                <TronLinkGuide installed={this.state.tronWeb.installed} loggedIn={this.state.tronWeb.loggedIn} url={"/?"+getString}/>
-              </>
-              );
-        
-            return (
-              <>
-                <BackOffice contrato={this.state.contrato} accountAddress={consulta} viewer/>
-              </>
+        case "preview":
+        case "viewer": 
+          if (!this.state.tronWeb.installed || !this.state.tronWeb.loggedIn) return (
+            <>
+              <TronLinkGuide installed={this.state.tronWeb.installed} loggedIn={this.state.tronWeb.loggedIn} url={"/?"+getString}/>
+            </>
             );
+      
+          return (
+            <>
+              <BackOffice contrato={this.state.contrato} accountAddress={consulta} viewer/>
+            </>
+          );
       
 
       default:  
@@ -151,5 +164,3 @@ class App extends Component {
   
 }
 export default App;
-
-// {tWeb()}

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import cons from "../../cons"
 
+const delay = (s)=> setTimeout(s*1000)
+
 export default class BackOffice extends Component {
 
     constructor(props) {
@@ -15,7 +17,6 @@ export default class BackOffice extends Component {
             levelPrice: 0,
             balanceUSDT: "Loading...",
             aprovedUSDT: 0,
-            contractUSDT: {},
             direccion: "...",
             link: "Make an investment to get the referral LINK",
             registered: false,
@@ -44,11 +45,10 @@ export default class BackOffice extends Component {
 
     async componentDidMount() {
  
-        
-        setInterval(() => {
-            this.estado();
-            this.Link();
-            this.Investors();
+        setTimeout(async() => {
+            await this.estado();
+            await this.Link();
+            await this.Investors();
         }, 3 * 1000);
 
     };
@@ -102,6 +102,8 @@ export default class BackOffice extends Component {
 
         for (var i = 15; i >= 0; i--) {
 
+            await delay(8);
+
             if (await this.props.contrato.matrix.usersActiveX3Levels(this.state.accountAddress, i).call()) {
                 activeLevels++;
             }
@@ -110,17 +112,11 @@ export default class BackOffice extends Component {
 
         var levelPrice = await this.props.contrato.matrix.levelPrice(activeLevels + 1).call();
 
-        var tokenAddress = await this.props.contrato.matrix.tokenUSDT().call();
-
-        const contractUSDT = await window.tronWeb.contract().at(tokenAddress);
-
-        var balanceUSDT = await contractUSDT.balanceOf(this.state.accountAddress).call();
+        var balanceUSDT = await this.props.contrato.USDT.balanceOf(this.state.accountAddress).call();
 
         balanceUSDT = parseInt(balanceUSDT._hex) / 10 ** 6;
 
-        var aproved = await contractUSDT.allowance(this.state.accountAddress, cons.SC).call();
-
-        //console.log(aproved);
+        var aproved = await this.props.contrato.USDT.allowance(this.state.accountAddress, cons.SC).call();
 
         if (aproved.remaining) {
             aproved = parseInt(aproved.remaining._hex) / 10 ** 6;
@@ -162,7 +158,6 @@ export default class BackOffice extends Component {
             balanceUSDT: balanceUSDT,
             texto: text,
             aprovedUSDT: aproved,
-            contractUSDT: contractUSDT,
             sponsor: direccionSP
 
         });
@@ -233,7 +228,13 @@ export default class BackOffice extends Component {
 
         var directos = 0;
 
+        var personMatrix = [];
+
         for (let index = 1; index <= LAST_LEVEL; index++) {
+
+            let mat = await this.props.contrato.matrix.usersX3Matrix(direccion, index).call();
+
+            personMatrix = [...personMatrix,...mat[1]]
 
             if (await this.props.contrato.matrix.usersActiveX3Levels(direccion, index).call()) {
                 invertido += levelPrice[index];
@@ -318,6 +319,8 @@ export default class BackOffice extends Component {
             });
         }
 
+        console.log(personMatrix);
+
         this.setState({
             invertido: invertido,
             ganado: ganado,
@@ -333,14 +336,14 @@ export default class BackOffice extends Component {
             //alert("viewer mode"); 
             return;}
 
-        const { level, levelPrice, balanceUSDT, aprovedUSDT, contractUSDT } = this.state;
+        const { level, levelPrice, balanceUSDT, aprovedUSDT } = this.state;
 
         var amount = levelPrice;
 
         amount = parseFloat(amount);
 
-        var balanceInTRX = await window.tronWeb.trx.getBalance(); //number
-        balanceInTRX = balanceInTRX / 10 ** 6;
+        /*var balanceInTRX = await window.tronWeb.trx.getBalance(); //number
+        balanceInTRX = balanceInTRX / 10 ** 6;*/
 
         var owner = await this.props.contrato.matrix.owner().call();
 
@@ -349,7 +352,7 @@ export default class BackOffice extends Component {
         var aproved = aprovedUSDT;
 
         if (aproved <= 0) {
-            await contractUSDT.approve(cons.SC, "115792089237316195423570985008687907853269984665640564039457584007913129639935").send();
+            await this.props.contrato.USDT.approve(cons.SC, "115792089237316195423570985008687907853269984665640564039457584007913129639935").send();
             return;
         }
 
