@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-
 import cons from "../../cons"
 
-const delay = (s)=> setTimeout(s*1000)
+//const delay = (s)=> setTimeout(s*1000)
 
 export default class BackOffice extends Component {
 
@@ -102,7 +101,7 @@ export default class BackOffice extends Component {
 
         for (var i = 15; i >= 0; i--) {
 
-            await delay(8);
+            //await delay(8);
 
             if (await this.props.contrato.matrix.usersActiveX3Levels(this.state.accountAddress, i).call()) {
                 activeLevels++;
@@ -127,7 +126,7 @@ export default class BackOffice extends Component {
         }
 
 
-        var text;
+        var text = "Link Wallet"
         if (aproved > 0) {
             if (activeLevels === 0) {
                 text = "Register and buy the first level"
@@ -135,9 +134,7 @@ export default class BackOffice extends Component {
                 text = "Buy next level"
             }
 
-        } else {
-            text = "Link Wallet"
-        }
+        } 
 
         var owner = window.tronWeb.address.fromHex(await this.props.contrato.matrix.owner().call());
         var user = await this.props.contrato.matrix.users(this.state.accountAddress).call()
@@ -162,7 +159,6 @@ export default class BackOffice extends Component {
 
         });
 
-        //console.log(min);
     }
 
     
@@ -203,18 +199,6 @@ export default class BackOffice extends Component {
 
         let canasta = [];
 
-        if (canasta.length < LAST_LEVEL) {
-            for (let index = 0; index < LAST_LEVEL; index++) {
-                canasta[index] = (<div className="col-4" key={"level" + index}>
-                    Loading...
-                </div>);
-
-            }
-
-        } else {
-            canasta = this.state.canastas
-        }
-
         var invertido = 0;
         var personas = 0;
         var ganado = 0;
@@ -227,7 +211,6 @@ export default class BackOffice extends Component {
         }
 
         var directos = 0;
-
         var personMatrix = [];
 
         for (let index = 1; index <= LAST_LEVEL; index++) {
@@ -275,7 +258,7 @@ export default class BackOffice extends Component {
                         break;
                 }
 
-                canasta[index - 1] = (
+                canasta.push(
                     <div className="card text-center text-white bg-secondary m-3" key={"level" + index} style={{ width: "25rem" }}>
                         <div className="card-body">
                             <h5 className="card-title">{index} | {levelPrice[index]} USDT</h5>
@@ -294,7 +277,7 @@ export default class BackOffice extends Component {
 
             } else {
                 // funcion comprar nivel que yo quiera this.props.contrato.matrix.buyNewLevel(nivel, precio + "000000").send()
-                canasta[index - 1] = (
+                canasta.push(
                     <div className="card text-center text-white bg-secondary m-3" key={"level" + index} style={{ width: "25rem" }}>
                         <div className="card-body">
                             <h5 className="card-title">{index} | {levelPrice[index]} USDT</h5>
@@ -315,17 +298,17 @@ export default class BackOffice extends Component {
             }
 
             this.setState({
-
+                canastas: canasta,
             });
         }
 
-        console.log(personMatrix);
+        //console.log(personMatrix);
 
         this.setState({
             invertido: invertido,
             ganado: ganado,
             personas: personas,
-            canastas: canasta,
+            
             directos: directos
         });
     }
@@ -420,7 +403,6 @@ export default class BackOffice extends Component {
                                 <p >Balance:</p>
                                 <p >Level:</p>
                                 <p >My ID:</p>
-                                <p>My invested:</p>
                                 <p>Partners:</p>
                                 <p>Team:</p>
 
@@ -429,7 +411,6 @@ export default class BackOffice extends Component {
                                 <p style={{ fontSize: '18px' }}>{this.state.balanceUSDT} <strong>USDT</strong></p>
                                 <p style={{ fontSize: '18px' }}>{this.state.level}</p>
                                 <p style={{ fontSize: '18px' }}>{this.state.id}</p>
-                                <p>{this.state.invertido} USDT</p>
                                 <p>{this.state.directos}</p>
                                 <p>{this.state.personas}</p>
 

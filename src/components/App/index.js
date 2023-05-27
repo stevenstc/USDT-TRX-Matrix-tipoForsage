@@ -34,7 +34,7 @@ class App extends Component {
 
     setInterval(async() => {
       await this.conectar();
-    }, 7*1000);
+    }, 8*1000);
       
   }
 
@@ -66,10 +66,10 @@ class App extends Component {
 
           contrato = {};
 
-          //window.tronWeb.setHeader({"TRON-PRO-API-KEY": 'b0e8c09f-a9c8-4b77-8363-3cde81365fac'})
+          window.tronLink.tronWeb.setHeader({"TRON-PRO-API-KEY": 'c2b1c905-43a7-48f8-9c80-6940189f86c6'})
 
-          contrato.matrix = await window.tronWeb.contract().at(cons.SC);
-          contrato.USDT = await window.tronWeb.contract().at(cons.USDT);
+          contrato.matrix = await window.tronLink.tronWeb.contract().at(cons.SC);
+          contrato.USDT = await window.tronLink.tronWeb.contract().at(cons.USDT);
 
           this.setState({
             contrato: contrato,
